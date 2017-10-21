@@ -1,0 +1,482 @@
+This is TeX, Version 3.141592 (MiKTeX 2.3) (preloaded format=latex 2000.11.28)  11 APR 2012 09:26
+**J_Jmath_CN.tex
+(J_Jmath_CN.tex
+LaTeX2e <2001/06/01>
+Babel <v3.7j> and hyphenation patterns for english, french, german, ngerman, du
+mylang, nohyphenation, loaded.
+(C:\CTeX\localtexmf\tex\latex\ctex\ctexart.cls
+Document Class: ctexart 2004/05/16 v0.4a ctex document class
+\c@CTEX@sectiondepth=\count79
+(C:\CTeX\texmf\tex\latex\base\article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(C:\CTeX\texmf\tex\latex\base\size11.clo
+File: size11.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(C:\CTeX\localtexmf\tex\latex\ctex\ctexcjk.clo
+File: ctexcjk.clo 2004/05/16 v0.4a ctex document class option
+
+(C:\CTeX\localtexmf\tex\latex\CJK\CJK.sty
+Package: CJK 2003/03/28 4.5.2
+
+(C:\CTeX\localtexmf\tex\latex\CJK\mule\MULEenc.sty
+File: MULEenc.sty 2003/03/28 4.5.2
+)
+(C:\CTeX\localtexmf\tex\latex\CJK\CJK.enc
+File: CJK.enc 2003/03/28 4.5.2
+)
+LaTeX Info: Redefining \selectfont on input line 661.
+\CJK@indent=\box26
+)
+(C:\CTeX\localtexmf\tex\latex\CJK\CJKnumb.sty
+Package: CJKnumb 2003/03/28 4.5.2
+\CJK@q=\count88
+\CJK@r=\count89
+)
+(C:\CTeX\localtexmf\tex\latex\ctex\CJKpunct.sty
+Package: CJKpunct 2004/02/20 4.5.2
+LaTeX Info: Redefining \texttt on input line 369.
+)
+\ccwd=\dimen103
+)
+(C:\CTeX\texmf\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(C:\CTeX\texmf\tex\latex\tools\indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(C:\CTeX\texmf\tex\latex\type1cm\type1cm.sty
+Package: type1cm 2002/09/05 v0.04 BlueSky/Y&Y Type1 CM font definitions (DPC, p
+atched RF)
+)
+\CTEX@q=\count90
+\CTEX@r=\count91
+)
+(C:\CTeX\texmf\tex\latex\amsmath\amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(C:\CTeX\texmf\tex\latex\amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(C:\CTeX\texmf\tex\latex\amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen104
+))
+(C:\CTeX\texmf\tex\latex\amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen105
+)
+(C:\CTeX\texmf\tex\latex\amsmath\amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count92
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count93
+\leftroot@=\count94
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count95
+\DOTSCASE@=\count96
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count97
+\c@MaxMatrixCols=\count98
+\dotsspace@=\muskip10
+\c@parentequation=\count99
+\dspbrk@lvl=\count100
+\tag@help=\toks16
+\row@=\count101
+\column@=\count102
+\maxfields@=\count103
+\andhelp@=\toks17
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(C:\CTeX\texmf\tex\latex\amsfonts\amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(C:\CTeX\texmf\tex\latex\amsfonts\amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(C:\CTeX\texmf\tex\latex\amscls\amsthm.sty
+Package: amsthm 2000/10/26 v2.08
+\thm@style=\toks20
+\thm@bodyfont=\toks21
+\thm@headfont=\toks22
+\thm@notefont=\toks23
+\thm@headpunct=\toks24
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks25
+)
+(C:\CTeX\texmf\tex\latex\fancyhdr\fancyhdr.sty
+\headwidth=\dimen113
+)
+(C:\CTeX\texmf\tex\latex\graphics\epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(C:\CTeX\texmf\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\CTeX\texmf\tex\latex\graphics\graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\CTeX\texmf\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(C:\CTeX\texmf\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2003/03/12 v1.1 MiKTeX 'graphics' configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(C:\CTeX\texmf\tex\latex\graphics\dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+\epsfxsize=\dimen116
+\epsfysize=\dimen117
+)
+(C:\CTeX\texmf\tex\latex\picins\picins.sty
+Option `picins' Version 3.0 Sep. 1992, TH Darmstadt/HRZ
+\@BILD=\box29
+\@TEXT=\box30
+\d@breite=\dimen118
+\d@hoehe=\dimen119
+\d@xoff=\dimen120
+\d@yoff=\dimen121
+\d@shad=\dimen122
+\d@dash=\dimen123
+\d@boxl=\dimen124
+\d@pichskip=\dimen125
+\d@tmp=\dimen126
+\d@tmpa=\dimen127
+\d@bskip=\dimen128
+\hsiz@=\dimen129
+\p@getot@l=\dimen130
+\c@breite=\count104
+\c@hoehe=\count105
+\c@xoff=\count106
+\c@yoff=\count107
+\c@pos=\count108
+\c@shad=\count109
+\c@dash=\count110
+\c@boxl=\count111
+\c@zeilen=\count112
+\@changemode=\count113
+\c@piccaption=\count114
+\c@piccaptionpos=\count115
+\c@picpos=\count116
+\c@whole=\count117
+\c@half=\count118
+\c@tmp=\count119
+\c@tmpa=\count120
+\c@tmpb=\count121
+\c@tmpc=\count122
+\c@tmpd=\count123
+\d@leftskip=\skip49
+\ptoti=\dimen131
+\ptotii=\dimen132
+\env@box=\box31
+\d@envdp=\dimen133
+\c@hsize=\count124
+\c@envdp=\count125
+\d@envb=\dimen134
+)
+(C:\CTeX\texmf\tex\latex\picinpar\picinpar.sty
+Pictures in Paragraphs. Version 1.2a, July 13, 1993
+\br=\count126
+\bl=\count127
+\na=\count128
+\nb=\count129
+\tcdsav=\count130
+\tcl=\count131
+\tcd=\count132
+\tcn=\count133
+\cumtcl=\count134
+\cumpartcl=\count135
+\lftside=\dimen135
+\rtside=\dimen136
+\hpic=\dimen137
+\vpic=\dimen138
+\strutilg=\dimen139
+\picwd=\dimen140
+\topheight=\dimen141
+\ilg=\dimen142
+\lpic=\dimen143
+\lwindowsep=\dimen144
+\rwindowsep=\dimen145
+\cumpar=\dimen146
+\twa=\toks26
+\la=\toks27
+\ra=\toks28
+\ha=\toks29
+\pictoc=\toks30
+\rawtext=\box32
+\holder=\box33
+\windowbox=\box34
+\wartext=\box35
+\finaltext=\box36
+\aslice=\box37
+\bslice=\box38
+\wbox=\box39
+\wstrutbox=\box40
+\picbox=\box41
+\waslice=\box42
+\wbslice=\box43
+\fslice=\box44
+) (C:\CTeX\texmf\tex\latex\subfigure\subfigure.sty
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip50
+\subfigcapskip=\skip51
+\subfigcaptopadj=\dimen147
+\subfigbottomskip=\skip52
+\subfigcapmargin=\dimen148
+\subfiglabelskip=\skip53
+\c@subfigure=\count136
+\c@lofdepth=\count137
+\c@subtable=\count138
+\c@lotdepth=\count139
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(C:\CTeX\texmf\tex\latex\subfigure\subfigure.cfg)
+\subfig@top=\skip54
+\subfig@bottom=\skip55
+)
+(C:\CTeX\texmf\tex\latex\pstricks\pstricks.sty
+Package: pstricks 1997/03/25 package wrapper for PSTricks pstricks.tex
+
+(C:\CTeX\texmf\tex\generic\pstricks\pstricks.tex
+`PSTricks' v97 patch 14  <1999/12/23> (tvz)
+\pst@dima=\dimen149
+\pst@dimb=\dimen150
+\pst@dimc=\dimen151
+\pst@dimd=\dimen152
+\pst@dimg=\dimen153
+\pst@dimh=\dimen154
+\pst@hbox=\box45
+\pst@boxg=\box46
+\pst@cnta=\count140
+\pst@cntb=\count141
+\pst@cntc=\count142
+\pst@cntd=\count143
+\pst@cntg=\count144
+\pst@cnth=\count145
+\pst@toks=\toks31
+(C:\CTeX\texmf\tex\generic\pstricks\pstricks.con)
+\psunit=\dimen155
+\psxunit=\dimen156
+\psyunit=\dimen157
+\pslinewidth=\dimen158
+\pst@customdefs=\toks32
+\pslinearc=\dimen159
+\everypsbox=\toks33
+\psframesep=\dimen160
+\pslabelsep=\dimen161
+\theoverlaybox=\box47
+))
+(C:\CTeX\texmf\tex\latex\fancyvrb\fancyvrb.sty
+Package: fancyvrb 1998/07/17
+
+Style option: `fancyvrb' v2.6, with DG/SPQR fixes <1998/07/17> (tvz)
+\FV@CodeLineNo=\count146
+\FV@InFile=\read1
+\FV@TabBox=\box48
+\c@FancyVerbLine=\count147
+\FV@StepNumber=\count148
+\FV@OutFile=\write3
+
+No file fancyvrb.cfg.
+) (C:\CTeX\texmf\tex\latex\natbib\natbib.sty
+Package: natbib 2003/06/06 7.1 (PWD)
+\bibhang=\skip56
+\bibsep=\skip57
+LaTeX Info: Redefining \cite on input line 518.
+\c@NAT@ctr=\count149
+) (ctextemp_J_Jmath_CN.aux
+(C:\CTeX\localtexmf\tex\latex\CJK\standard.bdg
+File: standard.bdg 2003/03/28 4.5.2
+)
+(C:\CTeX\localtexmf\tex\latex\CJK\extended.enc
+File: extended.enc 2003/03/28 4.5.2
+)
+(C:\CTeX\localtexmf\tex\latex\ctex\extended.chx
+File: extended.chx 2004/02/13 4.5.2
+)
+(C:\CTeX\localtexmf\tex\latex\ctex\GBKkern.cfg))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+
+(C:\CTeX\localtexmf\tex\latex\ctex\ctex.cfg
+File: ctex.cfg 2004/05/16 v0.4a ctex configuration file
+)
+(C:\CTeX\localtexmf\tex\latex\ctex\ctexcap.cfg
+File: ctexcap.cfg 2004/05/16 v0.4a ctex configuration file
+)
+LaTeX Font Info:    Try loading font information for C19+rm on input line 83.
+
+(C:\CTeX\localtexmf\tex\latex\ctex\c19rm.fd
+File: c19rm.fd 2004/05/16 v0.4a ctex font definition file
+) (gbkhei.tbl)
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.54> not available
+(Font)              size <10.95> substituted on input line 83.
+
+LaTeX Font Info:    Try loading font information for C19+hei on input line 89.
+(C:\CTeX\localtexmf\tex\latex\CJK\GB\c19hei.fd
+File: c19hei.fd 1999/06/20 4.3.0
+)
+Underfull \hbox (badness 10000) in paragraph at lines 89--101
+
+ []
+
+(gbksong.tbl)
+File: figs/sin.eps Graphic file (type eps)
+ <figs/sin.eps>
+File: figs/sin.eps Graphic file (type eps)
+ <figs/sin.eps>
+File: figs/fig.eps Graphic file (type eps)
+ <figs/fig.eps> [1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 244--246
+[][]\C19/rm/m/n/9.03/58  \C19/rm/m/n/9.03/50 ² \C19/rm/m/n/9.03/49 /n/9.03 . \C19/rm/m/n/9.03/43 ' \C19/rm/m/n/9.03/62 u \C19/rm/m/n/9.03/64 ¥ \C1
+9/rm/m/n/9.03/43 I \C19/rm/m/n/9.03/60 Æ \C19/rm/m/n/9.03/55 â \C19/rm/m/n/9.03
+/52 Ï \C19/rm/m/n/9.03/47 r \C19/rm/m/n/9.03/37 I \C19/rm/m/n/9.03/65 O \C19/rm
+/m/n/9.03/44 z \C19/rm/m/n/9.03/55 ê \C19/rm/m/n/9.03/46 â \C19/rm/m/n/9.03/47 
+¥ \C19/rm/m/n/9.03/59 X \C19/rm/m/n/9.03/57 Ú \C19/rm/m/n/9.03/42 ó \C19/rm/m/n
+/9.03/38 § \C19/rm/m/n/9.03/40  \C19/rm/m/n/9.03/46 ? \C19/rm/m/n/9.03/63 Ð \O
+T1/cmr/m/n/9.03 [EB/OL].
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
+
+ []
+
+[3] (ctextemp_J_Jmath_CN.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.41pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5943 strings out of 96049
+ 72534 string characters out of 1196993
+ 149555 words of memory out of 1147598
+ 8589 multiletter control sequences out of 35000
+ 54578 words of font info for 192 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 607
+ 32i,10n,43p,269b,915s stack positions out of 1500i,500n,5000p,200000b,32768s
+
+Output written on ctextemp_J_Jmath_CN.dvi (3 pages, 13796 bytes).

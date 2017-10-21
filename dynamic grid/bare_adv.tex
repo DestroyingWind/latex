@@ -1,0 +1,1083 @@
+
+%% bare_adv.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the advanced use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE Computer
+%% Society journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+% IEEEtran V1.7 and later provides for these CLASSINPUT macros to allow the
+% user to reprogram some IEEEtran.cls defaults if needed. These settings
+% override the internal defaults of IEEEtran.cls regardless of which class
+% options are used. Do not use these unless you have good reason to do so as
+% they can result in nonIEEE compliant documents. User beware. ;)
+%
+%\newcommand{\CLASSINPUTbaselinestretch}{1.0} % baselinestretch
+%\newcommand{\CLASSINPUTinnersidemargin}{1in} % inner side margin
+%\newcommand{\CLASSINPUToutersidemargin}{1in} % outer side margin
+%\newcommand{\CLASSINPUTtoptextmargin}{1in}   % top text margin
+%\newcommand{\CLASSINPUTbottomtextmargin}{1in}% bottom text margin
+
+
+
+
+%
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
+
+
+% For Computer Society journals, IEEEtran defaults to the use of
+% Palatino/Palladio as is done in IEEE Computer Society journals.
+% To go back to Times Roman, you can use this code:
+%\renewcommand{\rmdefault}{ptm}\selectfont
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage[space]{ctex}
+\ifCLASSOPTIONcompsoc
+  % The IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later.
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at:
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%\usepackage{acronym}
+% acronym.sty was written by Tobias Oetiker. This package provides tools for
+% managing documents with large numbers of acronyms. (You don't *have* to
+% use this package - unless you have a lot of acronyms, you may feel that
+% such package management of them is bit of an overkill.)
+% Do note that the acronym environment (which lists acronyms) will have a
+% problem when used under IEEEtran.cls because acronym.sty relies on the
+% description list environment - which IEEEtran.cls has customized for
+% producing IEEE style lists. A workaround is to declared the longest
+% label width via the IEEEtran.cls \IEEEiedlistdecl global control:
+%
+% \renewcommand{\IEEEiedlistdecl}{\IEEEsetlabelwidth{SONET}}
+% \begin{acronym}
+%
+% \end{acronym}
+% \renewcommand{\IEEEiedlistdecl}{\relax}% remember to reset \IEEEiedlistdecl
+%
+% instead of using the acronym environment's optional argument.
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/acronym
+
+
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/pkg/mdwtools
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/pkg/eqparbox
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+% NOTE: PDF thumbnail features are not required in IEEE papers
+%       and their use requires extra complexity and work.
+%\ifCLASSINFOpdf
+%  \usepackage[pdftex]{thumbpdf}
+%\else
+%  \usepackage[dvips]{thumbpdf}
+%\fi
+% thumbpdf.sty and its companion Perl utility were written by Heiko Oberdiek.
+% It allows the user a way to produce PDF documents that contain fancy
+% thumbnail images of each of the pages (which tools like acrobat reader can
+% utilize). This is possible even when using dvi->ps->pdf workflow if the
+% correct thumbpdf driver options are used. thumbpdf.sty incorporates the
+% file containing the PDF thumbnail information (filename.tpm is used with
+% dvips, filename.tpt is used with pdftex, where filename is the base name of
+% your tex document) into the final ps or pdf output document. An external
+% utility, the thumbpdf *Perl script* is needed to make these .tpm or .tpt
+% thumbnail files from a .ps or .pdf version of the document (which obviously
+% does not yet contain pdf thumbnails). Thus, one does a:
+%
+% thumbpdf filename.pdf
+%
+% to make a filename.tpt, and:
+%
+% thumbpdf --mode dvips filename.ps
+%
+% to make a filename.tpm which will then be loaded into the document by
+% thumbpdf.sty the NEXT time the document is compiled (by pdflatex or
+% latex->dvips->ps2pdf). Users must be careful to regenerate the .tpt and/or
+% .tpm files if the main document changes and then to recompile the
+% document to incorporate the revised thumbnails to ensure that thumbnails
+% match the actual pages. It is easy to forget to do this!
+%
+% Unix systems come with a Perl interpreter. However, MS Windows users
+% will usually have to install a Perl interpreter so that the thumbpdf
+% script can be run. The Ghostscript PS/PDF interpreter is also required.
+% See the thumbpdf docs for details. The latest version and documentation
+% can be obtained at.
+% http://www.ctan.org/pkg/thumbpdf
+
+
+% NOTE: PDF hyperlink and bookmark features are not required in IEEE
+%       papers and their use requires extra complexity and work.
+% *** IF USING HYPERREF BE SURE AND CHANGE THE EXAMPLE PDF ***
+% *** TITLE/SUBJECT/AUTHOR/KEYWORDS INFO BELOW!!           ***
+\newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
+pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
+colorlinks=true,linkcolor={black},citecolor={black},urlcolor={black},
+pdftitle={Bare Demo of IEEEtran.cls for Computer Society Journals},%<!CHANGE!
+pdfsubject={Typesetting},%<!CHANGE!
+pdfauthor={Michael D. Shell},%<!CHANGE!
+pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
+             template}}%<^!CHANGE!
+%\ifCLASSINFOpdf
+%\usepackage[\MYhyperrefoptions,pdftex]{hyperref}
+%\else
+%\usepackage[\MYhyperrefoptions,breaklinks=true,dvips]{hyperref}
+%\usepackage{breakurl}
+%\fi
+% One significant drawback of using hyperref under DVI output is that the
+% LaTeX compiler cannot break URLs across lines or pages as can be done
+% under pdfLaTeX's PDF output via the hyperref pdftex driver. This is
+% probably the single most important capability distinction between the
+% DVI and PDF output. Perhaps surprisingly, all the other PDF features
+% (PDF bookmarks, thumbnails, etc.) can be preserved in
+% .tex->.dvi->.ps->.pdf workflow if the respective packages/scripts are
+% loaded/invoked with the correct driver options (dvips, etc.).
+% As most IEEE papers use URLs sparingly (mainly in the references), this
+% may not be as big an issue as with other publications.
+%
+% That said, Vilar Camara Neto created his breakurl.sty package which
+% permits hyperref to easily break URLs even in dvi mode.
+% Note that breakurl, unlike most other packages, must be loaded
+% AFTER hyperref. The latest version of breakurl and its documentation can
+% be obtained at:
+% http://www.ctan.org/pkg/breakurl
+% breakurl.sty is not for use under pdflatex pdf mode.
+%
+% The advanced features offer by hyperref.sty are not required for IEEE
+% submission, so users should weigh these features against the added
+% complexity of use.
+% The package options above demonstrate how to enable PDF bookmarks
+% (a type of table of contents viewable in Acrobat Reader) as well as
+% PDF document information (title, subject, author and keywords) that is
+% viewable in Acrobat reader's Document_Properties menu. PDF document
+% information is also used extensively to automate the cataloging of PDF
+% documents. The above set of options ensures that hyperlinks will not be
+% colored in the text and thus will not be visible in the printed page,
+% but will be active on "mouse over". USING COLORS OR OTHER HIGHLIGHTING
+% OF HYPERLINKS CAN RESULT IN DOCUMENT REJECTION BY THE IEEE, especially if
+% these appear on the "printed" page. IF IN DOUBT, ASK THE RELEVANT
+% SUBMISSION EDITOR. You may need to add the option hypertexnames=false if
+% you used duplicate equation numbers, etc., but this should not be needed
+% in normal IEEE work.
+% The latest version of hyperref and its documentation can be obtained at:
+% http://www.ctan.org/pkg/hyperref
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Visualization of Flow Field based on Centroidal Voronoi Tessellation}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+%
+%\IEEEcompsocitemizethanks is a special \thanks that produces the bulleted
+% lists the Computer Society journals use for "first footnote" author
+% affiliations. Use \IEEEcompsocthanksitem which works much like \item
+% for each affiliation group. When not in compsoc mode,
+% \IEEEcompsocitemizethanks becomes like \thanks and
+% \IEEEcompsocthanksitem becomes a line break with idention. This
+% facilitates dual compilation, although admittedly the differences in the
+% desired content of \author between the different types of papers makes a
+% one-size-fits-all approach a daunting prospect. For instance, compsoc
+% journal papers have the author affiliations above the "Manuscript
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+\author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
+        John~Doe,~\IEEEmembership{Fellow,~OSA,}
+        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
+of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+GA, 30332.\protect\\
+% note need leading \protect in front of \\ to get a newline within \thanks as
+% \\ is fragile and will error, could use \hfil\break instead.
+E-mail: see http://www.michaelshell.org/contact.html
+\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
+\thanks{Manuscript received April 19, 2005; revised August 26, 2015.}}
+
+% note the % following the last \IEEEmembership and also \thanks -
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+%
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Advanced Demo of IEEEtran.cls for IEEE Computer Society Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+%
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+% The publisher's ID mark at the bottom of the page is less important with
+% Computer Society journal papers as those publications place the marks
+% outside of the main text columns and, therefore, unlike regular IEEE
+% journals, the available text space is not reduced by their presence.
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% or like this to get the Computer Society new two part style.
+%\IEEEpubid{\makebox[\columnwidth]{\hfill 0000--0000/00/\$00.00~\copyright~2015 IEEE}%
+%\hspace{\columnsep}\makebox[\columnwidth]{Published by the IEEE Computer Society\hfill}}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark (Computer Society journal
+% papers don't need this extra clearance.)
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% for Computer Society papers, we must declare the abstract and index terms
+% PRIOR to the title within the \IEEEtitleabstractindextext IEEEtran
+% command as these need to go into the title area created by \maketitle.
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+\indent 重心沃罗努瓦分布（Centroidal Voronoi tessellation，CVT）是沃罗努瓦分布的一种，其要求每个沃罗努瓦区域（Voronoi region）的生成元恰好为该沃罗努瓦区域的重心。这样的沃罗努瓦分布相较一般的沃罗努瓦分布更能突出的表现流场的一些特征。而科学计算可视化中正要求对目标的特征的进行图形化。所以将重心沃罗努瓦分布与流场可视化结合起来，可以用少量的点和箭头表达大量的流场信息，生成人眼更易接受的流场图。\\
+\indent 本文将介绍重心沃罗努瓦分布的基本信息与常用算法，并将其具体到科学计算可视化中，进而尝试连续多时间层的流场可视化。\\
+\indent A Centroidal Voronoi Tessellation (CVT) is a Voronoi Tessellation in which the generators are the centroids for each Voronoi region.It can convey us some characteristics while the common Voronoi Tessellation can't.Meanwhile,Visualization in Scientific Computing(ViSC) just requires us visualizing the representative characteristics of the field.In this case, it can be done with a few points or arrows to express a lot of information,by combining the CVT with the flow field visualization, and generating the image that can be more accessible to people.\\
+\indent In this paper,it is mentioned that what is ViSC and CVTs.Then focusing on how to generate a CVT and how to use CVT to generate a flow field visualization,in only one time point or more.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+科学可视化（Scientific Visualization），科学计算可视化（Visualization in Scientific Computing），重心沃罗努瓦分布（Centroidal Voronoi tessellation），流场（Flow Field）
+\end{IEEEkeywords}}
+
+
+% make the title area
+\maketitle
+
+
+% To allow for easy dual compilation without having to reenter the
+% abstract/keywords data, the \IEEEtitleabstractindextext text will
+% not be used in maketitle, but will appear (i.e., to be "transported")
+% here as \IEEEdisplaynontitleabstractindextext when compsoc mode
+% is not selected <OR> if conference mode is selected - because compsoc
+% conference papers position the abstract like regular (non-compsoc)
+% papers do!
+\IEEEdisplaynontitleabstractindextext
+% \IEEEdisplaynontitleabstractindextext has no effect when using
+% compsoc under a non-conference mode.
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+\ifCLASSOPTIONcompsoc
+\IEEEraisesectionheading{\section{introdution}\ label{sec:introduction}}
+\else
+\section{}
+\label{sec:introduction}
+\fi
+% Computer Society journal (but not conference!) papers do something unusual
+% with the very first section heading (almost always called "Introduction").
+% They place it ABOVE the main text! IEEEtran.cls does not automatically do
+% this for you, but you can achieve this effect with the provided
+% \IEEEraisesectionheading{} command. Note the need to keep any \label that
+% is to refer to the section immediately after \section in the above as
+% \IEEEraisesectionheading puts \section within a raised box.
+
+
+
+
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps (small caps for compsoc).
+%
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+%
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+%
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+%
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{}{\indent}科学计算可视化，是指将科学计算、实验获得的数据，转化为人类可以直接识别的的图像，图形的行为。因为人们对大量的数据很难直接理解与分析，同时人类获得的信息中，视觉信息占着绝大多数。所以我们通过可视化的方法，对数据进行一步转化，使的人们可以直观的看出某些数据的某些特点，为后续的精确分析、处理提供方向上的指引和规划。当然，因为人眼本身的的性质，我们无法通过图像获得精确的信息，所以可视化无法作为分析处理的一步，也始终没有产生对可视化效果优劣的明确评价标准；但也正因为如此，我们才需要不断改进可视化方法，使得其能够更加突出的表现目标的某些特征（突出到人眼能够区分识别）。这正是本文的目标，并且我们将这个指标作为定性的评价可视化优劣的标准。通过重心沃罗努瓦分布生成的图像，恰能明确反映目标流场的特征的，成为本文实验与改进目标。\\
+\indent 本章将主要介绍可视化的发展历史与现状，从而更加明晰我们究竟为什么要作做可视化以及如何进行科学计算可视化可视化。\\
+\indent Visualization in Scientific Computing, witch refers to the action of converting from the scientific computing and experimental data to the images that people can understand.Since we human can't directly comprehend and analysis big amount of data, it is necessary to convert the data before.And because visual information accounted for the vast majority of all the information which human obtains, it will be more conveniently and successfully to convert the data to the image helping people comprehend the data briefly.So that scientists can get the general impression of the data which leads the direction for further research. However,due to the structure of human eye,it is hardly to distinguish the difference of images in detail.So that simply rendering every data to generate an image may cover the details which sometimes can be the information we focusing on.At this point,it is better to extract the characteristics of the data and then only visualizing the characteristic information.That is the reason why we steadily developing the algorithm of ViSC,both on the higher computing speed and better characteristic extraction.
+
+
+
+\subsection{可视化的历史背景}
+可视化（Visualization），顾名思义，就是将非图形化的事物转换成图形化的事物，将非视觉信息转化为视觉信息，亦可翻译为图形化，图示化。
+\indent 事实上，最早的可视化可以可以追寻到很古老。举个简单的例子，从抽象的数字“2”的到符号“$\romannumeral2$”的转化，就是一种可视化。尽管其转化的符号也是一个抽象的符号，但是他完成了不可视到可视的转化，使得互相的信息的交流成为可能。
+现代对可视化的分类，主要将可视化按照其处理的对象分成3类：科学计算可视化：将科学计算获得的数据藉由计算机图形学和图像处理技术的方法将其传化为图形或图像进行显示；信息可视化：将已知的信息，如每天股市的交易情况，转化为可以直观识别的图形；知识可视化：将人类的知识转化为图形从而便于交流，并帮助他人获得正确的知识。\\
+\indent 作为学科术语,“可视化”一词正式出现在1987 年2月在美国国家科学基金会(NationalScienceFounda2tion,NSF) 召开的图形图像专题研讨会上。并在此会议上正式给出了科学计算可视化（Visualization in Scientific Computing，ViSC）的定义、涵盖的领域。从此，科学计算可视化成为了一门正式的专门学科。\\
+\indent 但在计算机用于科学计算的早期,由于计算机硬件条件的限制,科学计算只能以批处理方式进行。由于没有交互功能,科学家不能对计算过程进行干预和引导,只有被动地等待计算结果的输出,且大量的输出结果也是用人工方式处理。最好的辅助方法是用绘图仪以二维的方式展示结果。这样以来,大量信息被处理方法丢失,科学家得不到计算结果的直观、形象的整体印象,处理结果数据的任务繁杂,花费时间往往是计算时间的十几倍到几十倍。随着计算机处理图形、图像功能的不断提高,科学计算可视化成为了可能。
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+\subsection{科学计算可视化的现状}
+ViSC被定义为：用计算机图形学和图形处理技术,将科学计算过程中产生的数据及计算结果转换为图形或图像在屏幕上显示出来,并进行交互处理的理论、方法和技术。它涉及计算机图形学、图像处理、计算机视觉、计算机辅助设计及图形用户界面等多个研究领域。\\
+\indent 科学计算可视化的目的是理解自然的本质。要达到这个目的,科学家把科学数据,包括测量获得的数值或是计算中涉及、产生的数字信息变为直观的、以图形图像形式表示的、随时间和空间变化的物理现象或物理量呈现在研究者面前,使他们能够观察、模拟和计算。这个过程可细化为以下四个步骤:a. 过滤,预处理原始数据、转换数据形式、滤掉噪声、抽取感兴趣的数据等;b. 映射,将过滤后的数据映射为几何元素,常见有点、线、面图元、三维体图元等;c.绘制,几何元素绘制,得到结果图像;d.反馈,显示图像,并分析得到的可视结果。ViSC技术的意义重大,它大大加快了数据的处理速度,使每日每时都在产生的庞大数据得到有效的利用;实现人与人、人与机器之间的图像通讯,增强了人们观察事物规律的能力;使科学家在得到计算结果的同时,知道在计算过程中发生了什么现象,并可改变参数,观察其影响,对计算过程实现引导和控制。\\
+\indent 随着可视化技术应用领域不断扩大,人们对其需求越来越复杂,可视化概念扩展到工程数据和测量数据时,学术界把这种空间数据场的可视化称为体可视化(Volume
+visualization)技术。一般不将它看成是可视化的一个分支,而作
+为科学计算可视化的一个方向处理。
+体可视化技术研究如何表示、维护和绘制体数据集,从而观察数据内部结构和理解事物复杂特性。它是一种从体数据集中抽取内在的、本质的信息,并以图形图像方式交互地表现出来的技术。体数据集由三维笛卡尔网格体元(网格点上的数据值)构成,将网格体元存储在三维数组(体缓冲区)中。体数据集可来源于许多领域,这决定了体可视化的应用范围。如:工程建筑的空间场,气象卫星测量的空间场,航空航天实验、核爆炸模拟等对应的速度场和温度场,地震预报的力场,工业产品超声波探测的零件密度场,核磁共震产生的人体器官密度场等。\\
+\indent 十数年前,由于计算机的速度、显示器的分辨率等原因,使得体可视化在数据量即使较小的情况下也要花费很长的时间。解决这个问题来源于两个方面的努力:一是新型算法的研制成功,如表面拟合法(Surfacefitting)和体绘制(Volumerendering)。表面拟合法从数据场中提取等值面后对其进行展示,
+其显示速度快。缺点是由于只显示指定等值面非常容易丢失数据体中的关键信息。体绘制算法无需几何元素(点、线、面等)作中介表示,而是直接将整个数据场投影到屏幕空间。由于每次显示均要涉及整个数据集,因此它的显示速度比表面拟合法要慢,但它的显示质量很高且不丢失任何信息。二是硬件技术和并行计算技术的发展。并行体可视化既提供快速绘制的可能,又能够处理大的分布式数据。一个体可视化系统一般具有下列功能:a.高质量的数据表示方法;b.处理大规模的数据集合,且分辨率较高;c. 快速的图形、图像绘制算法;d.支持交互式操作,使用户参与控制。\\
+\indent 流场可视化是科学计算可视化的另一个分支方向,同时是流体力学的重要部分。正是流场可视化的研究使得计算流力学(CFD)快速发展。计算流体力学中的数据类型主要有向量场和张量场。流场可视化用箭头、流线和粒子跟踪技术研究二维流场。对三维流场,人们还没有找到一个普遍接受的、直观的、符合视觉习惯的可视化方法。主要通过以下几种方法进行研究:a.改造体可视化技术,将其拓展,使其可以用于流场可视化;b. 流面技术,用流面加梯度线索的方法表示流场;c.图标技术;d.基于特征的可视化,这是从较高层次进行的流场可视化。
+
+\subsection{本文的主要内容}
+本文主要研究基于重心沃罗努瓦分布生成的二维流场可视化，观察其对流场特征的表现效果，并试着对其细节进行改进。\\
+\indent 本文的主要结构为：\\
+第一章：可视化背景介绍。\\
+第二章：重心沃罗努瓦分布算法介绍。\\
+\section{重心沃罗努瓦分布算法}
+\subsection{重心沃罗努瓦分布}
+首先我们给出重心沃罗努瓦分布的严格定义：\\
+\indent 对一个开集$\Omega\subseteq\mathbf{R}^n$, 记$d(x_1,x_2)\in \mathbf{R}$为$\mathbf{R}^n$中任意两个点$x_1,x_2$ 的距离，一系列点集$\{ V_i\}^k_{i=1}$ 被称为一个沃罗努瓦分布，如果满足:①对$V_i$要求：$V_i\cap V_j=\{0\} \iff i\ne j,\bigcup^k_{i=1}\overline{V_i}=\overline{\Omega}$ 其中$\overline{V_i},\overline{\Omega}$ 为$V_i,\Omega$的闭包；\\
+②存在$mathbf{R}^n$中一族互不重合的点$\{v_i\}_i=1^k$，满足
+\begin{center}
+  $V_i=\{x\in\Omega |d(v_i,x)<d(v_j,x),j=1,\dots,i-1,i+1,\dots,k\}$
+\end{center}
+即$\{V_i\}_{i=1}^k$是一个沃罗努瓦分布。
+③同时$\{v_i\}$也恰为$\{V_i\}$的重心，即$\forall i\quad x\in V_i$, 对重量泛函
+\begin{center}
+$E(x)=\int_{V_i}\rho (s)d^2(x,s)ds$
+\end{center}
+每个$\{v_i\}$恰使得对应的$V_i$中重量泛函达到最小。其中$\rho(s)$ 为密度分布，对均匀物质可设置为1。
+此时对应的$v_i$称为对应的沃罗努瓦分布的生成元（Voronoi Generators）。\\
+\indent 从定义中我们可以看出，如果我们已知一个分布是重心沃罗努瓦分布，那么只需要获得$\{V_i\}$或$\{v_i\}$ 都可以推出另一方。然而定义中要求$\{V_i\}$和$\{v_i\}$ 互相约束。虽然每一组$\{v_i\}$ 只对应一个$\{V_i\}$，但是不同的$\{V_i\}$却可能对应相同的$\{v_i\}$；同时$\{v_i\}$生成的沃罗努瓦分布也并不一定以$\{v_i\}$ 为重心。所以重心沃罗努瓦分布并不能简单直接生成。同时需要指出的一点在于，上文定义的距离并不一定是欧氏距离，可以是广义距离；而密度函数也可以定义为许多东西，这在后面的分析中将会有所提及。下一节将介绍一种简单泛用生成重心沃罗努瓦分布的算法。
+\subsection{重心沃罗努瓦分布生成算法}
+当前比较广泛使用的一种简单生成重心沃罗努瓦分布的算法是罗伊德算法（Lloyd Algorithm）。对于给定的区域$\Omega$ 以及正整数$k$，我们可以生成$\Omega$ 中的$k$个区域的重心沃罗努瓦分布.\\
+\textbf{算法1}：$\mathbf{R}^n$中开集的重心沃罗努瓦分布生成算法\\
+任取$\Omega$中$k$个互不相同的点，记为$\{v_i\}_{i=1}^k$\\
+①对$\Omega$由$\{v_i\}_{i=1}^k$构造其沃罗努瓦分布，记为$\{V_i\}_{i=1}^k$。\\
+②对$\{V_i\}_{i=1}^k$最小化重量泛函，得到每一个的重心，记为$\{\overline{v}_i\}_{i=1}^k$。\\
+③计算变化距离$\delta=\sum_{i=1}^k d(v_i,\overline{v}_i)$，比较$\delta$与预设阈值$\epsilon$。\\
+\indent 如果$\delta\le\epsilon$，则终止，获得的$\{\overline{v}_i\}_{i=1}^k$ 即为某一沃罗努瓦分布的生成元；\\
+\indent 如果$\delta>\epsilon$，则令$v_i=\overline{v}_i,i=1,\dots,k$，返回①循环。\\
+ \\
+\indent 其中③的终止条件可以改成其他适合的条件，目标是使得每次循环的变动得以控制。
+\subsection{流场重心沃罗努瓦分布生成算法}
+\indent 相比于一个单纯的重心沃罗努瓦分布，例如上节所讨论的沃罗努瓦分布，相当于对某个只有一个标量函数$\rho$的区域进行划分，获得其沃罗努瓦分布。对一个流场来说，其上至少有一个向量值函数。当然，我们可以用对标量场相同的操作来进行沃罗努瓦划分；但这意味着我们将无法通过重心的分布来获得流场区别于普通标量场的信息。一个很直接的想法就是我们通过变更距离函数和密度函数，使得在沃罗努瓦划分的过程，考虑流场的向量信息。\\
+下面给出一个求解流场重心沃罗努瓦分布的算法范例，这是
+\begin{center}
+  DU, Q., AND WANG, X. 2004. Tessellation and clustering by mixture
+models and their parallel implementations. In Proceedings
+of the 2004 SIAM data mining conference, Orlando, FL, SIAM.
+\end{center}中提出的一种流场重心沃罗努瓦分布生成算法。
+\indent 对$\Omega\subset \mathbf{R}^n,\forall x\in \Omega$，记该流场为$y=F(x)\in \mathbf{R}^m$。 定义距离$\forall x_i\in\mathbf{R}^n ,y_i=F(x_i),i=1,2$给定正常数$w$
+\begin{center}
+$d(x_1,x_2)=\sqrt{|y_1|^2-|y_1|y_1 *y_2+w|y_1|^2|x_1 -x_2|^2}$
+\end{center}
+于是我们得到了沃罗努瓦划分：
+\begin{center}
+  $V_i=\{x\in \Omega|d(x_i,x)<d{x_j,x},\forall j\ne i\}$
+\end{center}
+以及重量泛函：
+\begin{center}
+  $E(x_i)=\int_{V_i} |y_i|^2 -|y_i|y_i *y_s+w|y_i|^2|x_i-x_s|^2 dx_s$
+\end{center}
+基于最小化重量泛函，我们得到了如下的算法。\\
+\textbf{算法2}：流场重心沃罗努瓦分布生成算法\\
+\indent 任取$\Omega$中$k$ 个不重合点，记为$\{x_i\}_{i=1}^k$\\
+①由这$k$个点生成$\Omega$的一个沃罗努瓦分布$\{V_i\}_{i=1}^k$
+\begin{center}
+  $V_i=\{x\in \Omega|d(x,x_i)<d(x,x_j),j\ne i\}$
+\end{center}
+②由每个沃罗努瓦区域生成其重心
+\begin{center}
+  $\overline{x}_i=\frac{\int_{V_i}|F(x)|^2 xdx}{\int_{V_i}|F(x)|^2 dx}\quad ,\quad \overline{y}_i=\frac{\int_{V_i}|F(x)|F(x)dx}{|\int_{V_i}|F(x)|F(x)dx|}\quad ,i=1,\dots ,k$
+\end{center}
+③比较$\{x_i,y_i\},\{\overline{x}_i,\overline{y}_i\}_{i=1}^k$\\ 如果其相等或满足某些容许条件（例如$\sum_{i=1}^k d(x_i,\overline{x}_i)<\epsilon$），终止运算，$\{\overline{x}_i,\overline{y}_i\}_{i=1}^k$ 即为所求的沃罗努瓦生成元；\\
+如果不满足容许条件，则将$\{x_i,y_i\}$赋值为$\{\overline{x}_i,\overline{y}_i\}_{}i=1^k$，然后回到①中循环。\\
+ \\
+\indent 这里假设的是均匀场，即$\rho(x)\equiv 1$，如果对于非均匀场$\rho(x)$，可将②中的公式替换为：
+②’\begin{center}
+  $\overline{x}_i=\frac{\int_{V_i}\rho(x)|F(x)|^2 xdx}{\int_{V_i}\rho(x)|F(x)|^2 dx}\quad ,\quad \overline{y}_i=\frac{\int_{V_i}\rho(x)|F(x)|F(x)dx}{|\int_{V_i}\rho(x)|F(x)|F(x)dx|}$\\ $i=1,\dots ,k$
+\end{center}
+\subsection{离散情况}
+\indent 由于实际的数据场，通常是离散的点数据，而非一个统一的函数场。这时只需将上节的算法中积分变成求和便可以直接平推到离散情况。但同时我们可以得到一个更直接的算法。\\
+\textbf{算法3}：对离散数据场$\{c_i\}_{i=1}^n$，其上向量值函数$F(x)$，任取$k$ 个互异点$\{x_i\}_{i=1}^k$。\\
+①以$\{x_i\}$为生成元生成一个沃罗努瓦分布。，将所有数据点$c_i$划分为$k$组，每组记为$V_k$。\\
+②对每一组$c_i$求其新重心：
+\begin{center}
+  $\overline{x}_i=\frac{\sum_{V_k}|F(x)|^2 xdx}{\sum_{V_k}|F(x)|^2 dx}\quad,\quad \overline{y}_i=\frac{\sum_{V_i}|F(x)|F(x)dx}{|\sum_{V_i}|F(x)|F(x)dx|}$
+\end{center}
+③对比新重心与原重心，如果相差足够小就终止，否则将$\overline{x}_i$赋值给$x_i$，返回①。
+\subsection{关于CVT生成算法的说明}
+\indent 之前两节所介绍的CVT生成算法，其原型是劳埃德算法（Lloyd Algorithm）。劳埃德算法解决K——平均问题时优势是收敛快，劣势是不能保证全局最优。然而由于CVT 并不需要要求其重量泛函的和是全局最优（最小）的，正好克服了劳埃德算法的这一劣势。\\
+\indent 当然，尽管说劳埃德算法的收敛相对快，但也只是相对而言。对于大规模的数据场，其计算时间依旧可能十分长。现在对于时间代价的减小方法主要是拟牛顿法
+\begin{center}
+  Fast Methods for Computing Centroidal Voronoi
+Tessellations
+James C. Hateley · HuayiWei · Long Chen
+\end{center}
+其具体思路是：????????????????????????\\
+\subsection{多个相近时间层的CVT方法}
+\indent 有时我们需要处理多个连续时间层的流场可视化，从而展示一定空间内流场的变化情况。而对一个固定空间中多个相近时间层求其CVT 时，除了每一个时间层分别求其CVT以外，我们希望能够有一些更快的，相临时间层之间有更多联系的方法。\\
+\indent 考虑流场的变化对CVT重心位置的影响。事实上在迭代过程中计算新的CVT重心时，可以看成对某个区域中的所有点进行对其向量模长的加权平均。也就是说，只要模长不变，或者模长平方的比例保持不变，对同一个点集来说，则流向不管如何变化，CVT 重心依然不变；同时，当向量模长整体变化不大时，新的重心也不会有较远的偏移。
+\indent 基于以上的考虑，在处理连续多个时间层的CVT时，可以将上一个时间层的CVT 重心作为新的时间层的重心初始点$\{x_i\}_{i=1}^k$。 这样可以在一定程度上节约时间成本。事实上在具体的实验中可以节约$\frac{5}{6}$的时间，甚至更多。\\
+\indent 需要注意到前几节最终得到的$\{x_i,y_i\}$ 是在$x_i$ 处的单位向量。也就是说，重心沃罗努瓦分布最终获得的仅仅是一个代表点的分布。距离实际的可视化还差一些工作。下一章将说明具体的可视化手段。
+\section{可视化方法}
+\indent 上一章介绍了重心沃罗努瓦分布的定义以及获得方法。通过Lloyd 算法，我们可以得到误差任意小的一个CVT。这样我们就有了一组在CVT的每个重心的单位长度的向量，于是我们就可以进行一些具体的可视化步骤了。\\
+然而不同的可视化，因其目标差异，所以关注点亦有不同。这就造成了可视化并无法评判对错的现象。广泛的来说，只要能展现出所想要表达，凸出的的特征，我们就可以说这个可视化是成功的。下面我将就长度，颜色，图形表示（箭头，椭圆盘，三角）给出一些说明与例子。
+\subsection{长度}
+\indent 首先我们要对那些单位长度的向量进行长度修正。这里的修正可以按照最关心的量进行修正，如直接取区域中最大（小）的向量模长，或者梯度等等。当然，从人们的一般直观来说，第一想到的都会是区域的向量大小的某种表示，所以我们通常首选区域向量大小的平均：
+\begin{center}
+  $L_i=\frac{1}{|V_i|}\int_{V_i}|F(x)|dx$
+\end{center}
+或
+\begin{center}
+  $L_i=\frac{1}{V_i}(\int_{V_i}|F(x)|^2 dx)^{1/2}$
+\end{center}
+对非均匀场：
+\begin{center}
+  $L_i=\frac{(\int_{V_i}\rho(x)|F(x)|^2 dx)^{1/2}}{\int_{V_i}\rho(x)dx}$
+\end{center}
+\indent 这样将CVT输出的$\overline{y}_i$修正为$\overline{y}_i * L_i$，即在$\overline{x}_i$ 处绘制$\overline{y}_i * L_i$的向量箭头即可。
+\subsection{颜色}
+\indent 最通常的可视化都会用颜色来表达大小，例如天气预报中的温度图，亮色表征高温，冷色表征低温，这是在标量场中非常常用的。而到了向量场，由于有了位于CVT 重心的有长度向量，颜色可以用来表达一些其他的东西，例如某个区域数据点的疏密、该区域重量泛函的相对大小、或是该区域向量的差异。以最后一个为例，我们可以将某一个沃罗努瓦区域的向量差异大小定义为：
+\begin{center}
+  $Var(V_i)=\frac{\int_{V_i}|y|^2 -|y|y\times y_i dx}{|V_i|}$
+\end{center}
+\indent 然后对所有区域的$Var(V_i)$进行归一化处理，再对应到灰度值或者其他的颜色数值即可。这样可以在展示向量场模长的同时，再多表现一个特征量。
+\subsection{图形表示}
+\indent 至于对在CVT重心处向量的表示图形的选择，比较常用的是箭头和椭圆。相比较来说，各有优劣；箭头对方向的表现更加明确，但相对对颜色的展示较差；椭圆对颜色的表述很好，但让人很难确认其起始点（CVT重心）。\\
+\indent 与此同时，因为点的疏密程度不同，如果CVT 区域较多且分布不均匀时，很可能出现绘制表现的交叉（箭头交叉和椭圆重叠）。因此可以考虑在局部使用短流线段来保证不交叉。具体如下。\\
+\textbf{算法4}：流线生成算法；设定流线每步步长$L$与终止条件（如步数）\\
+①取定初始点$x_0$，对应$y_0=F(x_0)$\\
+②计算$x_1=x_0+L*y_0$，对应$y_1=F(x_1)$\\
+③$y=\frac{y_0 +y_1}{2}$延$y$的方向走$L$到达$x_2$，即$x_2=x_0 +L*y$\\
+③如果$x_2$满足终止条件，则终止，否则令$x_0=x_2$，回到①\\
+\indent 这样我们将初始点选取为CVT的重心，非数据点的向量通过插值拟合获得，就可以得到任意接近真实流线的在CVT重心的短流线。这样的短流线在表征区域整体方向的同时，还可以一定程度上表征较近区域的流向，例如涡流在短流线中就会出现明显的弯曲，但是相同的场用相同的CVT数进行可视化而不通过流线时，却无法明确的体现涡流。\\
+\indent 通过上述的手段，我们已经可以将数据转化成我们需要的图片了。但是需要注意的一点在于：上述的很多方法，包括CVT过程中距离的选取，可视化时颜色，形状的决定等，都有很大的选择空间。这些需要根据具体情况来决定。下一章将展示一些具体的实例。
+\section{应用与数值实验}
+\indent 本章将主要展示运用CVT方法进行的流场可视化实例。
+\subsubsection{Subsubsection Heading Here}
+Subsubsection text here.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+% However, the Computer Society has been known to put floats at the bottom.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+\section{Proof of the First Zonklar Equation}
+Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+\section{}
+Appendix two text goes here.
+
+
+% use section* for acknowledgment
+\ifCLASSOPTIONcompsoc
+  % The Computer Society usually uses the plural form
+  \section*{Acknowledgments}
+\else
+  % regular IEEE prefers the singular form
+  \section*{Acknowledgment}
+\fi
+
+
+The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\end{thebibliography}
+
+% biography section
+%
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}{Michael Shell}
+Biography text here.
+\end{IEEEbiography}
+
+% if you will not have a photo at all:
+\begin{IEEEbiographynophoto}{John Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+

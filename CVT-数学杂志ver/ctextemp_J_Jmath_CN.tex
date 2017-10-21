@@ -1,0 +1,501 @@
+\def\CTeXPreproc{Created by ctex v0.2.4c, don't edit!}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                       %%
+%%     LaTeX + CTeX 《数学杂志》论文模板, 只针对 A4 纸的中文Paper.       %%
+%%                                                                       %%
+%%                                                                       %%
+%%                                                          2006.3.1     %%
+%%     版本历史:                                                         %%
+%%        Ver0.01   2005.09.10                                           %%
+%%        Ver1.01   2006.03.01                                           %%
+%%               1. 更改编号出现错位                                     %%
+%%               2. 增加作者信息                                         %%
+%%               3. 调整首页标题、作者和摘要之间的间距                   %%
+%%     You can mofify it and distribute it freely                        %%
+%%                                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            中文稿 文章模板：A4 纸, 小五字, 单列              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt,onecolumn,twoside]{ctexart}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,fancyhdr}
+\usepackage{epsfig,graphicx,picins,picinpar,subfigure}
+\usepackage{pstricks}
+\usepackage{fancyvrb}
+\usepackage[numbers,sort&compress]{natbib}
+
+\usepackage[linesnumbered,boxed,ruled,commentsnumbered]{algorithm2e}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{float}
+\usepackage{epstopdf}
+\renewcommand{\algorithmcfname}{算法}
+\SetKwInput{KwIn}{输入}
+\SetKwInput{KwOut}{输出}
+\renewcommand\figurename{图}
+\renewcommand{\tablename}{表}
+
+\headsep=0.5truecm \footskip 0pt \topmargin 0pt \oddsidemargin 0pt
+\evensidemargin 0pt \setlength{\textwidth}{14.8truecm}
+\setlength{\textheight}{21.5truecm}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\setcounter{page}{1}
+ \pagestyle{fancy} \fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        文章正文                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\CTEXoptions[figurename={Figure}] \CTEXoptions[tablename={Table}]
+\CTEXoptions[bibname={\normalsize 参~~考~~文~~献}]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-------------------- 作者提供的信息 ------------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\authors}{高天成, 朱立永}  % 仅用于页眉, 与\author{}中的一致
+%\newcommand{\mytitle}{一种基于CVT的动态流场可视化方法}}            % 仅用于页眉, 与\title{}中的一致
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%------------- 标题, 作者, 通信地址定义 ---------------------%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\Large\textbf{一种基于CVT的动态流场可视化方法}
+\footnotetext[1]{\zihao{-5}\textbf{收稿日期:} XXXX-XX-XX\quad
+                \quad \quad \textbf{接收日期:} XXXX-XX-XX}
+\footnotetext[0]{\zihao{-5}\textbf{基金项目：}国家民用客机基础研究项目 基金资助~(项目号：MJ-F-2012-04).}
+\footnotetext[0]{\zihao{-5}\textbf{作者简介:}
+高天成~(1992.12.10~--), 男, 北京市海淀区,
+主要研究方向: 科学计算可视化,网格生成. E-mail:gtczz@sina.com.}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 作者姓名与单位 ： 三种形式中选一种
+% 后面英文摘要中的名字和单位同样处理
+% ---------------------
+% 第一种形式: 单一作者
+% ---------------------
+%\author{作者\\[-1pt]
+%({\zihao{-5}作者单位(到部门),~~省市\, 邮政编码}) \\[-2pt]}
+
+% ---------------------
+% 第二种形式: 同一单位 多个作者 -- 名字左右并列,
+% ---------------------
+\author{\zihao{5}高天成~$^{1}$~, ~朱立永~$^{1}$\\[-1pt]
+({\zihao{-5}1. 北京航空航天大学数学与系统科学学院,~北京市海淀区~~100191}) \\[-2pt]}
+
+
+
+\date{}  % 这一行用来去掉默认的日期显示
+\maketitle \vspace{-8mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  中文摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{minipage}[c]{14cm}
+\zihao{-5} \mbox{}\hspace{2.4em}{\CJKfamily{hei}摘~要:}\quad
+本文给出了一种基于CVT(Centroidal Voronoi Tessellation)的动态流场可视化方法.这种方法基于稳态流场的可视化方法,借助于不同时间层生成元的继承性,缩短了可视化的计算时间.同时,通过引入短流线箭头,不但避免了直线箭头表示向量时相互交叉的问题,而且又更清楚地刻画了流场的特征.数值算例表明了所给出的基于CVT动态流场可视化方法的有效性.\\
+\mbox{}\hspace{2.4em}{\CJKfamily{hei}关\,键\,词:}\quad 动态流场; 可视化; 质心Voronoi剖分; 短流线箭头;生成元的继承性;\\
+\mbox{}\hspace{2.4em}{\CJKfamily{hei}MR(2010) 主题分类号:}\quad
+76M27 \quad \quad \quad
+\mbox{}\hspace{2.4em}{\CJKfamily{hei}中\,图\,分\,类\,号:}\quad
+029  \\
+\mbox{}\hspace{2.4em}{\CJKfamily{hei}文\,献\,标\,识\,码: }\quad A
+\quad \quad \quad
+\mbox{}\hspace{2.4em}{\CJKfamily{hei}文\,章\,编\,号:}\quad 0255-7797(2007)07-0001-00\\
+
+\end{minipage}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  正文由此开始
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\zihao{5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip 0mm \noindent {\large {\bf 1 ~引言}} \vskip 3mm
+\setcounter{section}{1}\setcounter{equation}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\indent 科学计算可视化,是指将科学计算和实验获得的数据,转化为人们可以直接识别的图像或图形的行为.通过数据可视化,人们可以直观地看出数据的特点、理解数据背后的本质,为后续的精确分析和处理提供方向上的指导.通常的可视化过程可细化为以下四个步骤：第一,数据过滤：主要包括预处理原始数据、转换数据形式、滤掉噪声、抽取感兴趣的数据等；第二, 映射：将过滤后的数据映射为几何元素,常见的几何元素有点、线、面、图元、三维体图元等；第三,绘制：绘制几何元素,得到结果图像；第四,反馈：显示图像并分析得到的可视化结果.这四步中尤以数据过滤最为关键,它不仅决定了过滤后的数据是否能抓住问题的特征,而且过滤后数据量的大小直接影响着后面几步的处理时间.寻找最能代表数据特征的数据是数据过滤的关键.
+
+在文献\cite{1}中,给出了一种基于CVT（Centroidal Voronoi Tessellation）的稳态向量场可视化方法.这种方法通过引入空间和向量场的距离函数来度量空间分布向量场的相似性.基于这样的距离,向量场可以被自然地分类并找出其中简化的代表.这种方法既有简单几何上的直观,又建立在CVT 的最优性质基础上.这种方法描述简单,容易理解和实施.在文献\cite{2}中,基于计算CVT的多水平算法,发展了一种快速的CVT可视化方法,这种方法要优于经典的Lolyd方法,可以做到对不同尺寸问题的一致收敛.在文献\cite{3} 中,提出了流线CVT的概念,并给出了一种数值计算流线CVT 的方法,这种方法可以给出流线的最优位置以便来代表流场的几何特征.
+
+\indent 流场可视化是科学计算可视化的一个分支方向\cite{4},同时也是流体力学的重要部分.流场可视化推动了计算流力学的快速发展.流场可视化用箭头、流线和粒子跟踪技术研究二维流场.在本文中,我们将文献\cite{1}中发展的基于CVT 的可视化方法推广到动态流场的情形.借助于相邻时间层生成元的继承性,缩短了可视化的计算时间.同时,通过引入短流线箭头,不但避免了直线箭头表示向量时相互交叉的问题,而且又更清楚地刻画了流场的特征.数值算例表明了所给出的基于CVT的动态流场可视化方法的有效性.
+
+本文的结构安排如下,在第二节,给出了文\cite{1}中发展的基于CVT的稳态流场数据可视化方法；在第三节,基于生成元的继承性和引入短流线的表示方法,给出了针对动态流场数据的基于CVT的可视化方法；在第四节,给出了几个动态流场的可视化结果；最后,给出了简单的总结.
+
+
+\vskip 4mm \noindent {\large {\bf 2 ~基于CVT的稳态流场数据可视化方法}} \vskip 3mm
+\setcounter{section}{2}\setcounter{subsection}{0}\setcounter{equation}{0}
+\indent 这里首先给出文献\cite{1}中发展的基于CVT 稳态流场数据可视化方法,这是后面发展针对动态流场数据可视化方法的基础
+\subsection{CVT的定义及其计算方法}
+\indent 从CVT的定义\cite{5}开始:\\
+\indent 对一个点集 $\Omega\subseteq\mathbf{R}^n$,记 $d(x_1,x_2)\in \mathbf{R}$ 为 $x_1,x_2$ 两点间的距离.一个划分可以由一组子集 $\{ V_i\}^k_{i=1}$ 表示.这个划分称为CVT,如果满足:\\
+\textcircled{1}对所有的子集 $V_i$,$V_i\cap V_j=\emptyset \iff i\ne j,\bigcup^k_{i=1}\overline{V_i}=\overline{\Omega}$ 其中 $\overline{V_i},\overline{\Omega}$ 是 $V_i,\Omega$的闭包.\\
+\textcircled{2}每个子集的质心,记为 $\{v_i\}_{i=1}^k$,恰好是整个Voronoi划分的生成元,即为:
+\begin{equation}
+\label{eq1}
+V_i=\{x\in\Omega |d(v_i,x)<d(v_j,x),j\ne i\}.
+\end{equation}
+\indent 文献\cite{5}中还以定理的形式提出了一种等价的基于能量CVT定义.通过定义能量积分为:
+\begin{equation}
+\label{eq2}
+E(x)=\int_{V_i}\rho(s)d^2(x,s)ds.
+\end{equation}
+若$\{v_i\}_{i=1}^k$是对应于$\{V_i\}_{i=1}^k$的CVT重心即生成元,则子集的质心 $v_i$ 同时也是是最小化能量积分的点 $\hat{x}$.其中$\rho(s)$ 为密度函数.\\
+\indent 如果生成元给定,就可以通过等式(\ref{eq1})生成Voronoi划分.同时,通过最小化函数(\ref{eq2}) 可以直接得到这个划分的全部质心.尽管如此,直接生成CVT 依然很困难,因为质心和生成元通常不重合.在文献\cite{5}中给出了一种CVT 生成算法：\\
+
+
+
+
+
+\begin{algorithm}[h]
+\label{al1}
+\KwIn{\\ 一个点集 $\Omega$\;\\ 一个正整数 $k$ 用来将$\Omega$ 分成 $k$ 个区域\;\\ 一个阈值 $\epsilon$\;}
+\KwOut{\\$k$ 个点作为CVT的生成元\;}
+
+在$\Omega$中选取任意$k$ 个不重合的点,记为 $\{v_i\}_{i=1}^k$.\\
+
+\While{true}{
+对每一个 $0<i\le k$,生成它的区域$\{v_i\}_{i=1}^k$.记为$\{V_i\}_{i=1}^k$.\\
+对每一个 $0<i\le k$,通过最小化能量函数计算区域质心$\{V_i\}_{i=1}^k$.记质心点为$\{\overline{v}_i\}_{i=1}^k$.\\
+计算变动距离：$\delta=\sum_{i=1}^k d(v_i,\overline{v}_i)$.\\
+\eIf{$\delta\le\epsilon$}
+{输出$k$ 个点 $\{\overline{v}_i\}_{i=1}^k$ 并终止循环\;}
+{替换 $v_i=\overline{v}_i,i=1,\dots,k$ 并继续循环\;}
+}
+\caption{生成CVT的Lloyd算法}
+\end{algorithm}
+\indent 该算法的优点是简单,有效.其在一维空间中对CVT 的收敛性由Du Q, Emelianenko M, Ju L等在文献\cite{6}中给出,对高维空间有一些弱收敛性\cite{7}\cite{8}.\\
+\indent 但是通常,Lloyd算法收敛很慢,在一维中证明了其为线性收敛.因此,为了加快Lloyd 算法的计算,可以使用过松弛移动\cite{9},拟牛顿方法\cite{10}等方法来提升计算效率.
+
+
+
+
+\subsection{对稳态流场的CVT生成算法及可视化处理}
+\indent 对一个简单点集,由算法\ref{al1}可以生成其对应的CVT.但是对像流场一样相对复杂一点的集合,如果希望质心点能够表现更多的信息,就应当将这些更多的信息加入计算之中.一个直接的想法就是修改能量函数.\\
+\indent 对一个点集 $\Omega\subset \mathbf{R}^n,\forall x\in \Omega$,加上其上的向量函数 $y=F(x)\in \mathbf{R}^m$ 成为一个流场.为了最小化其上的能量函数,可以使用稳态流场CVT生成算法.\\
+\begin{algorithm}[h]
+\caption{稳态流场CVT生成算法}
+\KwIn{\\ 一个流场中的点的集合$\Omega$ 和其上的向量函数 $F(x)$ \;\\ 一个正整数 $k$ 用来将$\Omega$ 分成 $k$ 个区域\;\\ 一个阈值 $\epsilon$\;}
+\KwOut{\\$k$ 个点作为CVT的生成元\;\\ 每个生成元上一个向量\;}
+选取$\Omega$中 $k$ 个不重合的点,记为 $\{x_i\}_{i=1}^k$\\
+\While{true}
+{由$k$个点$\{x_i\}_{i=1}^k$ 生成VT：
+  $V_i=\{x\in \Omega|d(x,x_i)<d(x,x_j),j\ne i\}$\;
+计算每个区域的质心：
+$\overline{x}_i=\frac{\int_{V_i}|F(x)|^2 xdx}{\int_{V_i}|F(x)|^2 dx}$
+$\overline{y}_i=\frac{\int_{V_i}|F(x)|F(x)dx}{|\int_{V_i}|F(x)|F(x)dx|}$
+$i=1,\dots ,k$\;
+计算位移量：$\delta=\sum_{i=1}^kd(x_i,\overline{x}_i)$\;
+\eIf{$\delta<\epsilon$}
+{
+输出$\{\overline{x}_i,\overline{y}_i\}_{i=1}^k$ 并终止循环\;
+}
+{
+替换$\{x_i,y_i\}\{\overline{x}_i,\overline{y}_i\}_{i=1}^k$ 并继续循环\;
+}
+}
+\end{algorithm}
+\indent 在该算法中假定密度是常数,即整个场是均匀的.这等价于$\rho(x)\equiv 1$.对于场密度不为常数的情况,可以简单地将算法中的质心计算式改为：
+\begin{equation}
+\overline{x}_i=\frac{\int_{V_i}\rho(x)|F(x)|^2 xdx}{\int_{V_i}\rho(x)|F(x)|^2 dx}\qquad\overline{y}_i=\frac{\int_{V_i}\rho(x)|F(x)|F(x)dx}{|\int_{V_i}\rho(x)|F(x)|F(x)dx|}
+\end{equation}
+其中 $i=1,\dots ,k$.\\
+\indent 这种算法依然是基于Lloyd的方法,在保持方法简单,收敛稳定的优势的同时,依然难以避免计算量大,收敛慢的问题.\\
+\indent 之所以在可视化之前先进行CVT的处理而不直接对所有点进行描绘,其原因是希望通过CVT提取流场的特征,去除不必要的冗余,避免关注点被掩盖.相比于其它的特征提取方法,CVT 是通过极小化能量函数获得的,因而可以将能量函数相对应的距离函数导出的特征表现的最突出.\\
+\indent 在图\ref{full}中,将所有的数据点进行了绘制,而在图\ref{CVT} 中仅绘制了CVT的质心点.通过图\ref{CVT} 可以很明显的看出圆柱右侧的两个涡这一明显的特征,而在图\ref{full}中这一特征被过多的数据点掩盖了.这即是基于CVT 的可视化的典型优势：消除冗余,保留特征.\\
+\indent 通过Lloyd算法,可以得到一个误差足够小的CVT.至此,得到了一组质心点和其上的单位向量.如果只关心整个流场的流向,那么这就已经足够了,但如果同时对流速也有兴趣,那么就需要对这个单位向量的模长进行修正.因为质心代表了整个区域的信息,所以在修正模长时一般选择一种有代表性的长度,典型的有区域最大模长、最小模长,或者简单平均模长.为了与质心公式的加权方法匹配,文献\cite{1}中给出了加权平均模长的例子：
+\begin{equation}
+  L_i=\frac{1}{|V_i|}\int_{V_i}|F(x)|dx
+\end{equation}
+或者
+\begin{equation}
+  L_i=\frac{1}{V_i}(\int_{V_i}|F(x)|^2 dx)^{1/2}
+\end{equation}
+对于非均匀场：
+\begin{equation}
+  L_i=\frac{(\int_{V_i}\rho(x)|F(x)|^2 dx)^{1/2}}{\int_{V_i}\rho(x)dx}
+\end{equation}
+\indent 这样,通过将之前的单位向量 $\overline{y}_i$ 修正为 $\overline{y}_i * L_i$. 每个$\overline{y}_i*L_i$ 的长度表征了整个区域内的向量的平均大小,即可以更直观地表现出不同区域向量大小的区别.区域内向量的平均模长越大,则代表向量的长度越大,反之平均模长越小,代表向量则越短.\\
+\begin{figure}[!h]
+\centering
+\subfigure{\label{full}}
+\addtocounter{subfigure}{-2}
+\subfigure[所有数据点绘制]{\subfigure{\includegraphics[width=0.4\textwidth]{figs/full.eps}}}
+\subfigure{\label{CVT}}
+\addtocounter{subfigure}{-2}
+\subfigure[只有质心绘制]{\subfigure{\includegraphics[width=0.4\textwidth]{figs/CVT.eps}}}
+\caption{圆柱绕流}
+\end{figure}
+
+
+\vskip 4mm \noindent {\large {\bf 3 ~基于CVT的动态流场数据可视化}} \vskip 3mm
+\setcounter{section}{3}\setcounter{subsection}{0}\setcounter{equation}{0}
+
+\indent 有时需要可视化一段时间的流场,从而观察其变化.但对于多个时间步,获得CVT的计算时间将会是个很大的问题.为此,基于两个连续时间步的连续性,提出一种起始点$\{v_i\}_{i=1}^k$的选择方法来加速对动态流场数据CVT的计算.\\
+\indent 考虑到能量函数$E(x)$对应流场也发生变化时可以写成$E(x,F)$即为流场和一组点的连续泛函.限制流场的区域不动,且由流场函数本身的连续性,可以得出流场函数空间为$C(\Omega)$的连续函数空间,故为内积空间,于是可以定义流场函数空间中的距离.记一个连续变化的流场的流场函数为$F(t)$,$t$为时间参数.由流场变化性质可得$F(t)$ 关于$t$ 连续.至此,对于两个连续时间步,即$\Delta t$不大,则$F$ 变化不大,对于最小化能量泛函的$x$来说亦不会有太大的移动.具体对应算法中质心的计算公式是区域内所有点关于向量模和密度函数的加权平均,换言之,只要向量模,和密度函数变化不大,那么这个加权平均值也不会有太大的改变.\\
+\indent 基于这一想法,提出了针对动态流场,快速生成一系列CVT的方法,从而进一步实现对动态流流场的数据可视化.
+\subsection{动态流场CVT生成算法}
+
+\begin{algorithm}[H]
+\caption{动态流场CVT生成算法}
+\KwIn{\\ 一个动态流场中每个时间步的点的集合$\Omega_i$ 和其上的向量函数 $F_i(x)$ $i=1,2,...,n$\;\\ 一个正整数 $k$ 用来将$\Omega$ 分成 $k$ 个区域\;\\ 一个阈值 $\epsilon$\;}
+\KwOut{\\ 每个时间步$k$ 个点作为CVT的生成元\;\\ 每个生成元上一个向量\;}
+选取$\Omega_1$中 $k$ 个不重合的点,记为 $\{x_i^1\}_{i=1}^k$\\
+\For{$a=1;a\le n;a++$}
+{
+\While{true}
+{由$k$个点$\{x_i^a\}_{i=1}^k$ 生成VT：
+  $V_i^a=\{x\in \Omega_a|d(x,x_i^a)<d(x,x_j^a),j\ne i\}$\;
+计算每个区域的质心：
+$\overline{x}_i^a=\frac{\int_{V_i^a}|F_a(x)|^2 xdx}{\int_{V_i^a}|F_a(x)|^2 dx}$
+$\overline{y}_i^a=\frac{\int_{V_i^a}|F_a(x)|F_a(x)dx}{|\int_{V_i^a}|F_a(x)|F_a(x)dx|}$
+$i=1,\dots ,k$\;
+计算位移量：$\delta=\sum_{i=1}^kd(x_i^a,\overline{x}_i^a)$\;
+\eIf{$\delta<\epsilon$}
+{输出$\{\overline{x}_i^a,\overline{y}_i^a\}_{i=1}^k$ 并跳出While循环\;}
+{替换$\{x_i^a,y_i^a\}$为$\{\overline{x}_i^a,\overline{y}_i^a\}_{i=1}^k$ 并继续循环\;}
+}
+\If{$a\ne n$}
+{
+取$\Omega_{a+1}$中$k$个点$\{x_i^{a+1}\}_{i=1}^k$ 与$\{x_i^a\}_{i=1}^k$重合\;
+}
+}
+\end{algorithm}
+\indent 该算法在简单计算一系列稳态流场的基础上,改进了每个时间步初始CVT生成元的选取.通过这个改进便可以将整体计算时间减少一半以上.表\ref{save} 和图\ref{chart}中展示了对同一动态流场相同终止条件下两种选点方法的时间对比.\\
+\indent 同时,由于对相邻时间步的CVT生成元进行了继承,在后一时间步中每一对CVT 生成元的相对移动可以很大程度上反映出这一时间步中流场的变化,即特征位置的移动.对于动态流场,通过继承上一个时间步的生成元,可以在高效的同时更好的表现流场的特征变化.因为CVT 的性质,生成元“倾向”于聚集在对能量函数贡献较大的点附近.因此,生成元的移动能在一定程度上反映能量函数极值点的移动.但是对于每个时间步随机选取初始生成元的情况,两个时间步之间的生成元没有关联性,最终很难将两组生成元进行对应,因而割裂的整个动态流场的连续性关系,使得连续时间步时生成元跳跃极大,十分不利于观察.
+
+\begin{table}
+\caption{时间花费对比}
+\label{save}
+\begin{center}
+\begin{tabular}{|c|c c c c c c c c c c c c|}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  \hline
+  时间步 & 0 & 5 & 10 & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 & 55\\
+  \hline
+  非随机（s） & 17 & 61 & 90 & 126 & 163 & 209 & 266 & 325 & 372 & 422 & 454 & 460\\
+  随机（s） & 17 & 111 & 197 & 294 & 387 & 479 & 572 & 692 & 808 & 920 & 1024 & 1162\\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}
+\begin{center}
+\includegraphics{figs/chart.eps}
+\caption{不同初始生成元选择方式时间花费对比}
+\label{chart}
+\end{center}
+\end{figure}
+
+
+\subsection{可视化策略——短流线}
+\indent 对于动态流场的可视化,依然可以对每一个时间步沿用稳态流场的可视化策略：对向量长度进行恢复,添加颜色表示额外信息.但在实际问题中,注意到在选点较多时,经常会出现向量的表示箭头的交叉,导致可视化效果变差.对此,基于流场流线不相交的特性,提出向量的局部短流线箭头表示,从而避免直接交叉,影响可视化效果.\\
+\begin{algorithm}[H]
+\caption{短流线生成算法}
+\KwIn{\\ 初始点$z_0$ 和向量函数 $F(z)$\;\\ 迭代次数 $k$\;}
+\KwOut{\\ 一条流线\;}
+\For{$i=0;i<k;i++$}{
+计算 $w_i=F(z_i)$ 作为这个循环的向量\;
+将 $z_i$ 移动到 $z_{i+1}=z_i+\frac{w_i}{k*\vert w_i\vert}$\;
+在 $z_i$ 和 $z_{i+1}$之间绘制一条直线\;
+}
+
+\end{algorithm}
+\indent 对于流场函数没有定义在连续空间的情况,可以通过插值得到每一个位置的向量函数近似值,从而通过上述算法得到短流线.与此同时,短流线在整个区域的流向上有更好的表现,因为其沿着流线移动,在流线变化剧烈的区域,典型的如涡流,能够更加清楚地表现出这些特征.
+
+\newpage
+\vskip 4mm \noindent {\large {\bf 4 ~应用实例}} \vskip 3mm
+\setcounter{section}{4}\setcounter{subsection}{0}\setcounter{equation}{0}
+\indent 本节主要展示一些具体的基于CVT的流场数据可视化实例.其中的流场均为非稳态可压缩流场,由非稳态可压缩Navier-Stokes -Stokes方程控制\cite{11}：
+\begin{equation}
+\frac{\partial U(x,t)}{\partial t}+\frac{\partial F_k(U(x,t))}{\partial x_k}=\frac{\partial G_k(U(x,t),\Delta U(x,t))}{\partial x_k},
+\end{equation}
+其中$U$代表守恒量,$F$代表对流通量,$G$代表粘性通量,具体表示为：
+\begin{equation}
+U=\left(
+    \begin{array}{c}
+      \rho \\
+      \rho u_i \\
+      \rho e \\
+    \end{array}
+  \right),
+F_j=\left(
+    \begin{array}{c}
+      \rho u_j \\
+      \rho u_iu_j+p\delta_{ij} \\
+      u_j(\rho e+p) \\
+    \end{array}
+  \right),
+G_j=\left(
+    \begin{array}{c}
+      0 \\
+      \sigma_{ij} \\
+      u_i(\sigma_{ij}+q_j) \\
+    \end{array}
+  \right),
+\end{equation}
+这里$\rho$,$p$和$e$代表密度,压力,和流体某个具体的总能量.$u_i$是在$i$这个方向上的流速.压强可以通过状态方程得到：
+\begin{equation}
+p=(\gamma-1)\rho(e-\frac{1}{2}u_ju_j),
+\end{equation}
+其中$\gamma$是具体的比热.粘性应力张量$\sigma$和热通量$q$表达为：
+\begin{equation}
+\sigma_{ij}=\mu(\frac{\partial u_i}{\partial x_j}+\frac{\partial u_j}{\partial x_i})-\frac{2}{3}\mu\frac{\partial u_k}{\partial x_k}\delta_{ij},\quad q_j=\frac{1}{\gamma-1}\frac{\mu}{Pr}\frac{\partial T}{\partial x_j}
+\end{equation}
+在上式中,$T$是温度流,$Pr$是层流Prandtl数,空气中取0.7.$\mu$代表分子黏性,由Sutherland公式确定：
+\begin{equation}
+\frac{\mu}{\mu_0}=(\frac{T}{T_0})^{\frac{3}{2}}\frac{T_0+S}{T+S}.
+\end{equation}
+$mu_0$表示温度为$T_0$时的粘性,$S$是一个等于$110K$的常量.这样$T$的温度可以写成：
+\begin{equation}
+T=\gamma\frac{p}{\rho}
+\end{equation}
+\begin{figure}
+\begin{minipage}[t]{0.5\linewidth}
+\subfigure{\label{1.1}}
+\addtocounter{subfigure}{-2}
+\subfigure[t=0.01]{\subfigure{\includegraphics[width=0.8\textwidth]{figs/jy1.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\subfigure{\label{1.4}}
+\addtocounter{subfigure}{-2}
+\subfigure[t=0.05]{\subfigure{\includegraphics[width=0.8\textwidth]{figs/jy5.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\subfigure{\label{1.5}}
+\addtocounter{subfigure}{-2}
+\subfigure[t=0.09]{\subfigure{\includegraphics[width=0.8\textwidth]{figs/jy9.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\subfigure{\label{1.6}}
+\addtocounter{subfigure}{-2}
+\subfigure[t=0.13]{\subfigure{\includegraphics[width=0.8\textwidth]{figs/jy13.eps}}}
+\end{minipage}
+\caption{翼型周围的流速变化}
+\label{jy}
+\end{figure}
+\indent 在图\ref{jy}中展示了一个无攻角匀速运动的二维翼形周边的速度场.可以看出随着时间演化,机翼上侧速度逐渐增大,而下侧则逐渐减小.这与文献\cite{12} 中的结果一致,表现出了翼型周围流场的变化情况.\\
+\indent 需要注意的是,不考虑具体问题地使用相同的距离函数和相同的可视化策略是十分危险的.很显然,应该针对不同的特征选择合适的距离函数和可视化策略.图\ref{2} 左侧三幅图与右侧三幅图展示了对同一个流场,不同距离函数和可视化策略所产生的巨大差别.\\
+\begin{figure}
+\centering
+\begin{minipage}[t]{0.4\linewidth}
+\subfigure{\label{2.1}}
+\addtocounter{subfigure}{-2}
+\subfigure[1-1]{\subfigure{\includegraphics[width=1\textwidth]{figs/smallarrow1.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\subfigure{\label{2.2}}
+\addtocounter{subfigure}{-2}
+\subfigure[2-1]{\subfigure{\includegraphics[width=1\textwidth]{figs/bigarrow1.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\subfigure{\label{2.3}}
+\addtocounter{subfigure}{-2}
+\subfigure[1-2]{\subfigure{\includegraphics[width=1\textwidth]{figs/smallarrow3.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\subfigure{\label{2.4}}
+\addtocounter{subfigure}{-2}
+\subfigure[2-2]{\subfigure{\includegraphics[width=1\textwidth]{figs/bigarrow3.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\subfigure{\label{2.5}}
+\addtocounter{subfigure}{-2}
+\subfigure[1-3]{\subfigure{\includegraphics[width=1\textwidth]{figs/smallarrow5.eps}}}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\subfigure{\label{2.6}}
+\addtocounter{subfigure}{-2}
+\subfigure[2-3]{\subfigure{\includegraphics[width=1\textwidth]{figs/bigarrow5.eps}}}
+\end{minipage}
+\caption{绕柱流}
+\label{2}
+\end{figure}
+\indent 图\ref{2}描绘了一个绕柱流场的演化过程.流体在绕过刚体柱后先是平流,之后逐渐演变最终形成两个涡,使用了$E(x)=\int_{V_i}\frac{d^2(x,s)}{F(s)}ds$ 作为能量函数.使用这样的能量函数,CVT 生成元自动地聚集在了速度较低的位置.左侧三张图中不对向量大小进行修正,直接绘制短流线,其结果是两个涡并不明显.而在右侧三张图中,使用上文算法中提到的能量函数,同时取向量模长的倒数,并以此为基础步长绘制短流线.可以看出,此时两个涡是十分明显的.
+
+\vskip 4mm \noindent {\large {\bf 5 ~总结}} \vskip 3mm
+\setcounter{section}{5}\setcounter{subsection}{0}\setcounter{equation}{0}
+\indent 通过应用短流线和继承生成元的方法发展了一种针对动态流场的基于CVT的可视化方法.短流线可以表达更多流场中的细节信息,继承生成元在缩短计算时间的同时,也能将流场的变化刻画的更加明显.通过这两种方法,可以将整个流场的特征表现的更加清楚.\\
+\indent 相比于其他的可视化方法,基于CVT的可视化在全局可视化,算法可靠性,计算效率,适应性上有一定的优势.许多的可视化方法倾向于通过选择一些特定的原始数据点来避免冗余信息,CVT方法通过生成新的代表点,即质心,来表征区域信息.这使得可以不受原始数据点的束缚,来生成更加有代表性的质心,从而更好的可视化整个流场.\\
+\indent 尽管如此,还有一些问题依然存在.基于Lloyd的CVT 生成算法计算量大,收敛缓慢,需要大量的时间迭代出最终结果,稳定快速的CVT生成算法仍然需要更多更深入的研究.同时,对不同的情况如何选择可视化策略,目前只是基于经验地尝试不同的策略然后选择较好的.对此,如果针对性的选择合适的可视化策略,将是一个值得深入研究的问题.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  参考文献
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\zihao{-5}
+\begin{thebibliography}{99}
+%\setlength{\parskip}{0pt}  %段落之间的竖直距离
+\addtolength{\itemsep}{-0.8 em} % 缩小参考文献间的垂直间距
+  \bibitem{1}
+Du Q, Wang X. Centroidal Voronoi tessellation based algorithms for vector fields visualization and segmentation[C]// Visualization. IEEE, 2004:43-50.
+\bibitem{2}
+M.Emelianenko.Fast Multilevel CVT-Based Adaptive Data Visualization Algorithm[J].高等学校计算数学学报(英文版),2010,3(2):195-2113(2):195-211.
+\bibitem{3}
+Liu W, Lu L, Levy B, et al. Centroidal Voronoi Tessellation of Streamlines for Flow Visualization[C]// International Symposium on Voronoi Diagrams in Science and Engineering. IEEE Computer Society, 2013:75-81.
+\bibitem{4}
+刘晓波,华祖林,何国建.计算流体力学的科学计算可视化研究进展[J].水动力学研究与进展(A辑),2004,19(1):120-125
+\bibitem{5}
+Qiang Du.Centroidal Voronoi Tessellations: Applications and Algorithms[ J] . Siam Review, 1999 , 41 ( 4 ) : 637 - 676 
+\bibitem{6}
+Qiang Du.Convergence of the Lloyd Algorithm for Computing Centroidal Voronoi Tessellations[ J] . Siam Journal on Numerical Analysis, 2006 , 44 ( 1 ) : 102 - 119
+\bibitem{7}
+Sabin, M. J.; Gray, R. M. (1986), "Global convergence and empirical consistency of the generalized Lloyd algorithm", IEEE Transactions on Information Theory, 32 (2): 148–155.
+\bibitem{8}
+Emelianenko, Maria; Ju, Lili; Rand, Alexander (2009), "Nondegeneracy and Weak Global Convergence of the Lloyd Algorithm in Rd", SIAM Journal on Numerical Analysis, 46: 1423–1441.
+\bibitem{9}
+Xiao X. Over-Relaxation Lloyd Method For Computing Centroidal Voronoi Tessellations[J]. Dissertations \& Theses - Gradworks, 2010.
+\bibitem{10}
+James C. Hateley,Huayi Wei,Long Chen.Fast Methods for Computing Centroidal Voronoi Tessellations[ J] . Journal of scientific computing,2015 , 63 ( 1 ) : 185 - 212
+\bibitem{11}
+Cheng J, Yang X, Liu T, et al. A Direct Discontinuous Galerkin method for the compressible Navier-Stokes equations on arbitrary grids[C]// Aiaa Aerospace Sciences Meeting. 2015.
+\bibitem{12}
+叶建,林国华,邹正平,陆利蓬.低雷诺数下二维翼型绕流的流场特性分析[J].航空动力学报,2003,18(1):38-45
+\bibitem{13}
+Du Q, Wang D. Anisotropic centroidal Voronoi tessellations and their applications[J]. Siam Journal on Scientific Computing, 2005, 26(3):737--761.
+\bibitem{14}
+DU, Q., AND WANG, X. 2004. Tessellation and clustering by mixture models and their parallel implementations. In Proceedings of the 2004 SIAM data mining conference, Orlando, FL, SIAM.
+
+\end{thebibliography}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  英文摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6mm}
+\hspace{-8mm}
+\parbox{\textwidth}{
+\begin{center}
+\large{\textbf{A centroidal Voronoi tessellation based visualization algorithm for time-dependent flow field}}\\
+\vspace{8mm}
+\zihao{5}{Tiancheng Gao1$^{1}$~,~Liyong Zhu1$^{1}$~}\\[2pt]
+(\textit{\zihao{-5} 1.School of Mathematics and Systems Science, Beihang University, Beijing 100191, China}) \\[2pt]
+\end{center}
+
+\begin{center}
+\begin{minipage}[c]{14cm}
+\zihao{-5}
+ \hspace{2em}\textbf{Abstract:}
+In this work, we present a visualization algorithm based on centroidal Voronoi tessellation(CVT) for time-dependent flow field datum. The proposed method is based on the CVT-based visualization algorithm for steady flow field datum. The proposed method has good compuation cost of obtaining the CVT by inheriting the generator. And by introducing short streamline arrows to represent flow field datum, this method can avoid the crossness of strealine arrrow as well as can capturing the features of flow field dutum. Numerical examples demonstrate effectiveness and robustness of the centroidal Voronoi tessellation based visualization algorithm for typical flow field datum with eddies.\\
+\mbox{}\hspace{2.3em}\textbf{Keywords:}\quad time-dependent flow field datum; visualization; centroidal Voronoi tessellation; short streamline arrows;inheriting generator.\\
+\mbox{}\hspace{2.3em}\textbf{2010 MR  Subject Classification:}\quad 76M27\\
+
+\end{minipage}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  文章结束
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\end{document}
