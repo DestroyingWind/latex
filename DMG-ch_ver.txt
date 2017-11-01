@@ -1,0 +1,340 @@
+\title{A local-adjustment based two-dimensional \\Delaunay triangular mesh generation method \\on a bounded domain with moving boundary}
+
+
+\author{\IEEEauthorblockN{Tiancheng Gao}
+\IEEEauthorblockA{School of Mathematics \\andSystems Science\\
+Beihang University \\
+Beijing, China 100091\\
+Email: gtczz@sina.com}
+
+
+\begin{abstract}
+In this talk, we present a two-dimensional triangular Delaunay mesh generation method based on local mesh adjustment on a bounded domain with moving boundary. By employing local mesh adjustment rather global re-generation, the developed method obtains good efficiency, while the Delaunay property of the generated mesh guarantees that the mesh has good quality. Furthermore, high dimensional embedding technology is combined with the proposed mesh generation method to generate the anisotropic mesh for a bounded domain with moving boundary. Some typical numerical examples demonstrate the effectiveness, efficiency and robust of the proposed method.
+\end{abstract}
+
+
+
+
+
+
+
+
+\section{Introduction}
+然而现实中显然存在一些实例使得网格无法保拓扑，例如物体分成两半，新的边和点必须在两个新物体之间生成。故而，基于这些本质不保拓扑的，或者强行保持网格拓扑性质会导致网格质量极度变差的问题，例如相对运动，不保拓扑的方法逐渐发展起来。
+在本文中，我们提出了一种简单但有效的基于Delaunay准则的动态网格生成方法。因为Delaunay准则的要求，网格的拓扑性质是无法保持的，故而属于不保拓扑方法。该方法的优点是对物体大位移的网格灵活性以及Delaunay方法带来的算法鲁棒性。同时为了提升算法效率，采用局部调整而非全局重生成。最后，将该方法与高维嵌入技术结合，从而生成各向异性的动态网格。
+
+\section{Delaunay triangulation and high dimensional embedding}
+在本节中，首先会为了后文的深入讨论给出Delaunay三角化的简要介绍。其中，作为动态网格生成算法的基础，Lawson翻转算法和Delaunay再优化将会被着重介绍。
+\subsection{Delaunay triangulation}
+我们首先给出二维三角化的定义\cite{Discrete}：
+\begin{myDef}
+一个平面点集S的三角化是这个平面的一个划分，并且极大化，两个顶点均是是S中的点的，不相交的边的数量。
+\end{myDef}
+通常，一个固定点集有许多不同的三角化。然而，通过一系列边翻转，即通过将两个相邻三角形组成四边形，将原来两个三角形的公共边替换成四边形的另一条对角线，可以使得这些三角化相互转化\cite{lawson}。例如图\ref{flip}中展示的，从\ref{flip1}到\ref{flip2}的变换就是一次边翻转。
+
+\begin{center}
+\begin{figure}[htbp]{\label{flip}}
+%\centering
+\begin{minipage}[t]{0.4\linewidth}
+\begin{center}
+\subfigure{\label{flip1}}
+\addtocounter{subfigure}{-2}
+\subfigure[]{\subfigure{\includegraphics[width=0.8\textwidth]{distincttriangulation1.png}}}
+\end{center}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\begin{center}
+\subfigure{\label{flip2}}
+\addtocounter{subfigure}{-2}
+\subfigure[]{\subfigure{\includegraphics[width=0.8\textwidth]{distincttriangulation2.png}}}
+\end{center}
+\end{minipage}
+\caption{sample of an edge flip}
+\end{figure}
+\end{center}
+
+
+在一个确定点集的所有三角化中，有些三角化相对于其他的三角化在大多数情况下是更有意义的。Delaunay三角化正是这样的一个特殊的三角化。它有着许多等价的定义，其中一种为\cite{Discrete}：
+\begin{myDef}\
+对于一个三角化中所有的三角形，其外接圆内不包含除去该三角形三个顶点以外的任何点，则这个三角化被称为Delaunay三角化。
+\end{myDef}
+这个定义表明了Delaunay三角化包含的规则的三角形相对于其它的三角化更多，而这点正好保证了网格的质量。因此，基于Delaunay的网格生成方法成为了一种主流的三角网格生成方法。而Delaunay三角化生成算法有很多种，例如分治算法，增量算法，通过Voronoi划分的对偶图获得等等。在本文的动态网格生成算法中，使用了基于Lawson边翻转的增量算法\cite{lawson}（将任一三角化通过一系列边翻转转化成Delaunay三角化的算法）。之所以使用该算法是因为边翻转算法的灵活性有助于后续的动态网格生成，同时其鲁棒性保证回归到Delaunay三角化，尽管其计算效率并不是最优的。
+
+\begin{algorithm}
+\KwIn{\\A point set $S$\;}
+\KwOut{\\A Delaunay triangulation $T$\;}
+Randomly select 3 points to generate the first triangle.Remove the 3 points from $S$\;
+\While{$S$ is not empty}{
+Take one point,denoting $p$, and locate the point on current triangulation\;
+\eIf{$p$ is in the convex hull of current triangulation}
+{Call a 1-3 flip or 2-4 flip to insert the new point into the triangulation\;}
+{Generate a new triangle with the proper edge on the convex hull and the new point\;}
+Call the lawson flip to transform the new triangulation to Delaunay\;}
+\caption{Delaunay triangulation generation algorithm}
+\end{algorithm}
+
+这里1-3翻转和2-4翻转指的是插入点的方法。如果待插入的点在某一个三角形内部，则进行一次1-3翻转，将原三角形分成三个三角形。如果待插入的点在某两个三角形的公用边上，则进行一次2-4翻转将这两个相邻三角形分成4个三角形。形如图\ref{insert}中所展示的。
+
+
+\begin{center}
+\begin{figure}[htbp]{\label{insert}}
+\centering
+\begin{minipage}[t]{0.4\linewidth}
+\begin{center}
+\subfigure{\label{flip1-3}}
+\addtocounter{subfigure}{-2}
+\subfigure[before 1-3 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{1-3.png}}}
+\end{center}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\begin{center}
+\subfigure{\label{flip1-3after}}
+\addtocounter{subfigure}{-2}
+\subfigure[after 1-3 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{1-3after.png}}}
+\end{center}
+\end{minipage}
+
+\begin{minipage}[t]{0.4\linewidth}
+\begin{center}
+\subfigure{\label{flip2-4}}
+\addtocounter{subfigure}{-2}
+\subfigure[before 2-4 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{2-4.png}}}
+\end{center}
+\end{minipage}
+\begin{minipage}[t]{0.4\linewidth}
+\begin{center}
+\subfigure{\label{flip2-4after}}
+\addtocounter{subfigure}{-2}
+\subfigure[after 2-4 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{2-4after.png}}}
+\end{center}
+\end{minipage}
+\caption{Insert strategy}
+\end{figure}
+\end{center} 
+
+
+\subsection{Constrained Delaunay triangulation and Delaunay refinement}
+Delaunay三角化为生成高质量的三角网格体重了一种有效的方法。并且，对任一确定的点集，如果该点集处于通常状态，即没有四点共则圆，Delaunay三角化是唯一的。然而，再具体应用中，有时不能只对简单点集进行三角化。比如有的物体的边界在网格生成时必须保留，从而描述这个物体的形状变化或运动。但是这些物体的边界与Delaunay准则相违背，这时需要强制这些边在最后的三角化中存在。因此，强制Delaunay三角化应运而生。
+强制Delaunay三角化指的是是一种全局Delaunay而局部非Delaunay的三角化，强制Delaunay三角化可以通过普通Delaunay三角化通过一系列边翻转，恢复强制边来生成，其具体算法见文献\cite{constrained1}。
+而Delaunay再优化方法，则是一种通过添加原点集以外的额外点来提升网格质量的方法。因为原点集在平面的分布不一定是均匀的，故而即使Delaunay三角化可能仍然会产生质量很差的三角化。对于这种情况，可以使用Delaunay再优化方法来添加额外点，分割大的三角形，从而导致不满足Delaunay准则，进而产生边翻转，最终消除过小或过大的的角。具体来说，这个过程先检查所有三角形，然后再其中过大的三角形中心，或者过小角的强制边上插入点\cite{refinement1}，然后进行Lawson边翻转恢复强制Delaunay性质。通过迭代进行这一步骤，原始的Delaunay三角化得以获得均一化和优化。
+\subsection{High dimensional embedding}
+在文献\cite{hd embed}中Dassi、Si和Perotto提出了一种新颖的通过高维嵌入的方法生成各向异性网格的方法。其主要思想是通过将平面三角化的节点通过嵌入函数提升到高维空间，称为嵌入空间。然后在嵌入空间中生成一个拟Delaunay的三角化，这一步通过在嵌入距离下分割，拼接和翻转三角化的边实现。最终，将这个拟Delaunay三角化投影回原平面。其中各向异性网格的生成是基于特殊的嵌入函数的性质获得的。换言之，可以通过选择合适的嵌入函数将该方法变成一种自然的自适应网格优化方法。
+\section{Dynamic mesh generation}
+本文的动态网格生成方法是基于前一节介绍的强制Delaunay三角化方法的。通过一系列首尾相连的强制边组成一个物体边界的表示。所以动态网格生成的主要任务是移动这些强制边来模拟物体的移动和变形。
+\subsection{Overview of the algorithm}
+简单来说，本问的动态网格生成方法的核心思路是在移动物体周围“挖一个洞”，从而使得在移动表示物体边界的强制边的时候，不会与其它点和边产生交叉。在将边界强制边移动完后，通过Lawson边翻转和Delaunay再优化来恢复网格的Delaunay性质并进行网格质量的局部优化。算法流程如下\ref{DMGalgo}：
+
+\begin{algorithm}
+\KwIn{\\A point set $S$\\A series of vectors describing the motion of boundary points of each step $\{v_s^t\}$\\Max step $Maxstep$}
+\KwOut{\\A series of meshes $\{M^t\}$}
+Generate the triangulation of the first step\;
+$step=0$\;
+Output the triangulation as $M^{step}$\;
+\While{$step<Maxstep$}{
+Recover the segments from the refined triangulation by removing the free segment points\;
+Remove the collision points and edges\;
+Move the boundary edges via moving the constrained segment points $S_i^{step+1}=S_i^{step}+v_{S_i}^{step}$\;
+Call locally lawson flip and locally Delaunay refinement\;
+Output the triangulation as $M^{step}$\;
+}
+\caption{Dynamic mesh generation algorithm}
+\label{DMGalgo}
+\end{algorithm}
+
+这个算法是基于人们的直观感觉，即清除移动路径上的所有阻碍边和点，这样边界强制边就可以没有冲突的直接移动。因为算法调用了删点和加点的操作，故而这个算法属于不保持拓扑的网格生成算法。并且该算法对大变形，相对运动，大位移的网格变形天然支持，在时间效率上，因为在每一个时间步中没有任何的迭代操作，所以计算量极大地减小了。
+\subsection{Algorithm detail discussion}
+在本小节中将对算法的细节进行一些讨论。
+因为对每一个时间步物体边界的描述是通过在物体强制边界点上的一个位移向量表示的，所以那些因为前步Delaunay再优化添加的自由边界点需要先被移除，因为其上没有位移量的描述。这样可以在恢复物体边界一致性的同时，减少物体周围三角形的数量，一定程度上降低计算量。
+为了移除可能的冲突点，需要首先在所有点的列表中找出所有的冲突点。针对所有运动的边界边，区域内所有在该边运动路径上的点都是这个边界边的冲突点。因此，可以将所有边界边的冲突点全部分别移除。但是，这样对每一个边遍历一次全部点列表会导致计算效率十分低下。所以Thus, it is able to loose the criterion of collision points removing more points while decrease the search computation. In our case, a rectangle box,parelleling to coordinate, is employed covering the moving object and the place where it should move to. Moreover, to avoid too bad triangle after moving,the box is expand a little on each direction.Then it is able to loop only once within the points list to find out all the collision points according to this criterion. However,merely removing the collision points is not abundant beacuse collision edges may remain,shown in fig \ref{collision edge}.So to deal with the collision edges, it is available to flip all the collision edge from closer to further, to clear a way for moving the constrained segment points directly.\\
+\indent After all the constrained segment points moved, the lawson flip and Delaunay refinement algorithm is called locally,to reduce the computational cost.Detailly, only the triangles adjacent to the constrained segment points are pushed into the flip queue as well as the refinement array.
+\subsection{Dynamic high dimensional embedding}
+To employ the high dimensional embedding algorithm into the dynamic mesh generation strategy, it is a trivial idea to modify the embedding function step by step, adjusting to the moving objects. Following this idea, the dynamic mesh generation strategy can be modified as locally lawson flip and Delaunay refinement replaced with high dimensional embedding function with dynamic embedding funciton.\\ 
+\begin{algorithm}
+\KwIn{\\A point set $S$\\A series of vectors describing the motion of boundary points of each step $\{v_s^t\}$\\Max step $Maxstep$\\Dynamic embedding funcition $F(x,y,t),\quad t=1,2,\cdots,Maxstep$}
+\KwOut{\\A series of meshes $\{M^t\}$}
+Generate the triangulation of the first step\;
+$step=0$\;
+Output the triangulation as $M^{step}$\;
+\While{$step<Maxstep$}{
+Recover the segments from the refined triangulation by removing the free segment points\;
+Remove the collision points and edges\;
+Move the boundary edges via moving the constrained segment points $S_i^{step+1}=S_i^{step}+v_{S_i}^{step}$\;
+Dynamic high dimensional embedding\;
+Output the triangulation as $M^{step}$\;
+}
+\caption{Dynamic mesh generation algorithm}
+\label{DMGwithHDE}
+\end{algorithm}
+\indent This algorithem enable the generation of adaptive refined mesh along with dynamic generation, for instance, anisotropic grids around deformation boundary to simulate the boundary layer.
+\section{Results}
+\subsection{Deformation cases}
+Subsection text here.
+\subsection{Relative motion cases}
+
+
+\subsubsection{}
+Subsubsection text here.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgment
+\section*{Acknowledgment}
+
+
+The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+\bibitem{60}
+Zhe Jiang. Research of the Generation of Dynamic Unstructured Meshes[D]. Nanjing University of Science \& Technology, 2006.
+\bibitem{hd embed}
+Dassi F, Si H, Perotto S, et al. Anisotropic Finite Element Mesh Adaptation via Higher Dimensional Embedding[J]. Procedia Engineering, 2015, 124:265-277.
+\bibitem{Discrete}
+Devadoss S L, O'Rourke J. Discrete and computational geometry[M]. Springer, 2001.
+\bibitem{lawson}
+Charles Lawson. Transforming triangulations. Discrete Mathematics, Volume 3, pages 365–372, 1972.
+\bibitem{constrained1}
+Chew L P. Constrained Delaunay triangulations[J]. Algorithmica, 1989, 4(1-4):97-108.
+\bibitem{constrained2}
+Shewchuk, Jonathan R. (2008). "General-Dimensional Constrained Delaunay and Constrained Regular Triangulations, I: Combinatorial Properties". 39 (1-3): 580–637.
+\bibitem{refinement1}
+Ruppert, Jim (1995). "A Delaunay refinement algorithm for quality 2-dimensional mesh generation". Journal of Algorithms. 18 (3): 548–585. doi:10.1006/jagm.1995.1021
+\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+
