@@ -145,10 +145,10 @@ Output the triangulation as $M^{step}$\;
 \subsection{Algorithm detail discussion}
 在本小节中将对算法的细节进行一些讨论。
 因为对每一个时间步物体边界的描述是通过在物体强制边界点上的一个位移向量表示的，所以那些因为前步Delaunay再优化添加的自由边界点需要先被移除，因为其上没有位移量的描述。这样可以在恢复物体边界一致性的同时，减少物体周围三角形的数量，一定程度上降低计算量。
-为了移除可能的冲突点，需要首先在所有点的列表中找出所有的冲突点。针对所有运动的边界边，区域内所有在该边运动路径上的点都是这个边界边的冲突点。因此，可以将所有边界边的冲突点全部分别移除。但是，这样对每一个边遍历一次全部点列表会导致计算效率十分低下。所以Thus, it is able to loose the criterion of collision points removing more points while decrease the search computation. In our case, a rectangle box,parelleling to coordinate, is employed covering the moving object and the place where it should move to. Moreover, to avoid too bad triangle after moving,the box is expand a little on each direction.Then it is able to loop only once within the points list to find out all the collision points according to this criterion. However,merely removing the collision points is not abundant beacuse collision edges may remain,shown in fig \ref{collision edge}.So to deal with the collision edges, it is available to flip all the collision edge from closer to further, to clear a way for moving the constrained segment points directly.\\
-\indent After all the constrained segment points moved, the lawson flip and Delaunay refinement algorithm is called locally,to reduce the computational cost.Detailly, only the triangles adjacent to the constrained segment points are pushed into the flip queue as well as the refinement array.
+为了移除可能的冲突点，需要首先在所有点的列表中找出所有的冲突点。针对所有运动的边界边，区域内所有在该边运动路径上的点都是这个边界边的冲突点。因此，可以将所有边界边的冲突点全部分别移除。但是，这样对每一个边遍历一次全部点列表会导致计算效率十分低下。所以，可以通过放宽对冲突点的判断标准，从而获得查找冲突点计算量的降低。在本文的实例中，使用了一个平行于两个坐标轴的矩形，包围住物体移动前后的位置。同时，为了防止移动之后产生质量过差的三角形，可以将这个矩形4个方向都扩大一些。然后只需要对全局点列表循环一次，移除矩形内部所有的非边界点，就可以去除所有的冲突点。然而，仅仅移除所有冲突点并不能让边界无阻碍地移动打终止位置，因为有可能还有冲突边留存，如图\ref{collision edge}所示。故而还需要处理冲突边，对此，可以将所有的冲突边按照距离待移动点从近到远的顺序进行边翻转，这样将这些边的一端成为待移动点，从而不再成为边界点移动的阻碍。
+在所有强制边和边界点移动之后，再局部调用Lawson边翻转算法和Delaunay再优化算法。之所以局部调用的目的是减少计算代价，具体通过只将被移动的边界点相邻的三角形推入待处理队列，然后使用上述算法对这个队列中的三角形进行处理。这样可以避免对大量无关的三角形进行无意义的判断。
 \subsection{Dynamic high dimensional embedding}
-To employ the high dimensional embedding algorithm into the dynamic mesh generation strategy, it is a trivial idea to modify the embedding function step by step, adjusting to the moving objects. Following this idea, the dynamic mesh generation strategy can be modified as locally lawson flip and Delaunay refinement replaced with high dimensional embedding function with dynamic embedding funciton.\\ 
+为了将高维嵌入算法与本文的动态网格生成方法结合，一个很直观的想法是通过让嵌入函数跟随移动物体一同变化，每一步对嵌入函数进行修改。这样，可以将原本的动态网格生成方法最后的部分变成局部Lawson边翻转和高维嵌入，通过将Delaunay再优化替换为高维嵌入方法，并相应的修改嵌入函数，从而做到使得高维嵌入的自适应效果跟随物体移动进行。 
 \begin{algorithm}
 \KwIn{\\A point set $S$\\A series of vectors describing the motion of boundary points of each step $\{v_s^t\}$\\Max step $Maxstep$\\Dynamic embedding funcition $F(x,y,t),\quad t=1,2,\cdots,Maxstep$}
 \KwOut{\\A series of meshes $\{M^t\}$}
@@ -165,7 +165,7 @@ Output the triangulation as $M^{step}$\;
 \caption{Dynamic mesh generation algorithm}
 \label{DMGwithHDE}
 \end{algorithm}
-\indent This algorithem enable the generation of adaptive refined mesh along with dynamic generation, for instance, anisotropic grids around deformation boundary to simulate the boundary layer.
+这个算法能够生成自适应再优化的动态网格，对具体情况而言，可以对变形物体边界处生成各向异性网格，从而模拟边界层等实际情况所需要的网格特性。
 \section{Results}
 \subsection{Deformation cases}
 Subsection text here.
@@ -176,99 +176,7 @@ Subsection text here.
 Subsubsection text here.
 
 
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex,
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure}
 
-% Note that the IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
-
-
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
-
-
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively.
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
 
 
 
@@ -279,10 +187,7 @@ The conclusion goes here.
 
 
 
-% conference papers do not normally have an appendix
 
-
-% use section* for acknowledgment
 \section*{Acknowledgment}
 
 
@@ -292,28 +197,7 @@ The authors would like to thank...
 
 
 
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
 
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 \bibitem{60}
 Zhe Jiang. Research of the Generation of Dynamic Unstructured Meshes[D]. Nanjing University of Science \& Technology, 2006.
@@ -334,7 +218,6 @@ Ruppert, Jim (1995). "A Delaunay refinement algorithm for quality 2-dimensional 
 
 
 
-% that's all folks
-\end{document}
+
 
 
