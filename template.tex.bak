@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage[linesnumbered,boxed,ruled,commentsnumbered]{algorithm2e}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{float}
+
+\renewcommand{\algorithmcfname}{算法}
+\SetKwInput{KwIn}{输入}
+\SetKwInput{KwOut}{输出}
+
+
+\begin{document}
+
+%\begin{algorithm}
+%\KwIn{\\ 一个点集 $S$\;}
+%\KwOut{\\ 一个Delaunay三角化 $T$\;}
+%随机选取三个点生成第一个三角形，从$S$中移除这三个点\;
+%\While{$S$非空}{
+%取出一个点，记为$p$在当前三角化中定位该点\;
+%\eIf{$p$ 在当前三角化的闭包中}
+%{通过1-3和2-4边翻转将新点插入当前三角化中\;}
+%{将新点与对应合适的闭包上的边生成一个新的三角形\;}
+%通过Lawson边翻转将新的三角化变成Delaunay三角化\;}
+%\caption{增量Delaunay三角化生成算法}
+%\end{algorithm}
+
+\begin{algorithm}
+\KwIn{\\ 一个点集 $S$\\ 一组描述物体边界运动的向量$\{v_s^t\}$\\ 总步数 $Maxstep$}
+\KwOut{\\ 一系列网格$\{M^t\}$}
+生成初始状态的网格\;
+$step=0$\;
+输出该初始网格$M^{step}$\;
+\While{$step<Maxstep$}{
+将再优化过程中添加的自由边界点移除，恢复强制边\;
+移除边界运动过程中的冲突点和冲突边\;
+通过移动强制点来完成对物体边界的移动：$S_i^{step+1}=S_i^{step}+v_{S_i}^{step}$\;
+通过局部Lawson边翻转和Delaunay再优化提升局部网格质量\;
+输出当前时间层的网格：$M^{step}$\;
+$step=step+1$\;
+}
+\caption{动态网格生成算法}
+\label{DMGalgo}
+\end{algorithm}
+
+\end{document}
