@@ -1,0 +1,897 @@
+
+%% bare_conf.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[conference]{IEEEtran}
+% Some Computer Society conferences also require the compsoc mode option,
+% but others use the standard conference format.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+\usepackage{ctex}
+\usepackage{booktabs}
+\usepackage[linesnumbered,boxed,ruled,commentsnumbered]{algorithm2e}
+\usepackage{subfigure}
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at:
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+\newtheorem{myDef}{Definition}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{基于Delaunay方法的二维三角网格局部调整技术及其应用}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{高天成}
+\IEEEauthorblockA{School of Mathematics \\andSystems Science\\
+Beihang University \\
+Beijing, China 100091\\
+Email: gtczz@sina.com}
+\and
+\IEEEauthorblockN{Homer Simpson}
+\IEEEauthorblockA{Twentieth Century Fox\\
+Springfield, USA\\
+Email: homer@thesimpsons.com}
+\and
+\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
+\IEEEauthorblockA{Starfleet Academy\\
+San Francisco, California 96678--2391\\
+Telephone: (800) 555--1212\\
+Fax: (888) 555--1212}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+%
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3},
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+在本文中，我们提出了一种基于动边界局部调整的二维网格生成方法。通过引入局部调整而非全局重生成，在提升网格生成效率的同时保证的网格的质量。更进一步，通过与高维嵌入技术结合，可以针对移动边界生成自适应的动态网格。并通过具体例子展示该方法的有效性，效率，以及稳定性。
+\end{abstract}
+
+% no keywords
+\begin{IEEEkeywords}
+网格生成，Delaunay方法，动态网格生成，高维嵌入
+\end{IEEEkeywords}
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{引言}
+% no \IEEEPARstart
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+网格生成通常是科学计算的第一步，同时也是消耗最多的一步。文献\cite{60}指出，其时间花费通常占到整个科学计算任务的60%。尤其对于非稳态问题，典型的如几何变形或多体相对运动，网格必须对解算过程中每一个时间步进行更新，这极大地增大了网格生成的代价。因此，开发有效且高效，同时保持网格质量的动态网格生成方法是十分有必要的\cite{survey}。
+通过移动物体的边界，可以描述物体的变形或移动。所以动态网格可以理解为一种描述边界移动对网格影响的方法。简单来说，动态网格分成两种：保拓扑方法和不保拓扑方法。
+保拓扑方法指的是在变动前后网格的拓扑性质不变，即只有网格中点的位置移动，不会有点的消失或添加或边的变动。由此，为了防止网格穿透，每个点的移动不能过大以避免越过某一条边。尽管有这些缺点，保拓扑方法天然保证解算区域的守恒性，这点对于最终解的收敛性是至关重要的。其中典型的方法有弹簧拉伸法和背景网格映射法。
+然而现实中显然存在一些实例使得网格无法保拓扑，例如物体分成两半，新的边和点必须在分裂之后的两个新物体之间生成。故而，因为这些本质不保拓扑的，或者强行保持网格拓扑性质会导致网格质量极度变差的问题，例如相对运动，不保拓扑的方法逐渐发展起来。
+在本文中，我们提出了一种简单但有效的基于Delaunay 准则的动态网格生成方法。因为Delaunay准则的要求，网格的拓扑性质是无法保持的，故而属于不保拓扑方法。该方法的优点是对物体大位移的网格灵活性以及Delaunay方法带来的算法鲁棒性。同时为了提升算法效率，采用局部调整而非全局重生成。最后，将该方法与高维嵌入技术结合，从而生成自适应的动态网格。
+
+
+\section{Delaunay三角化和高维嵌入}
+在本节中，首先会为了后文的深入讨论给出Delaunay三角化的简要介绍。其中，作为动态网格生成算法的基础，Lawson翻转算法和Delaunay再优化将会被着重介绍。
+\subsection{Delaunay三角化}
+我们首先给出二维三角化的定义\cite{Discrete}：
+
+\begin{myDef}
+一个平面点集S的三角化是这个平面的一个划分，并且极大化，两个顶点均是是S中的点的，不相交的边的数量。
+\end{myDef}
+
+通常，一个固定点集有许多不同的三角化。然而，通过一系列边翻转，即通过将两个相邻三角形组成四边形，将原来两个三角形的公共边替换成四边形的另一条对角线，可以使得这些三角化相互转化\cite{lawson}。例如图\ref{flip}中展示的，从\ref{flip1}到\ref{flip2}的变换就是一次边翻转。
+
+\begin{center}
+    \begin{figure}[htbp]
+        \centering
+        \begin{minipage}[t]{0.4\linewidth}
+            \begin{center}
+                \subfigure{\label{flip1}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[翻转前]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/distincttriangulation1.png}}}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{0.4\linewidth}
+            \begin{center}
+                \subfigure{\label{flip2}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[翻转后]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/distincttriangulation2.png}}}
+            \end{center}
+        \end{minipage}
+        \caption{边翻转}
+        \label{flip}
+    \end{figure}
+\end{center}
+
+在一个确定点集的所有三角化中，有些三角化相对于其他的三角化在大多数情况下是更有意义的。Delaunay三角化正是这样的一个特殊的三角化。它有着许多等价的定义，其中一种为\cite{Discrete}：
+
+\begin{myDef}\
+对于一个三角化中所有的三角形，其外接圆内不包含除去该三角形三个顶点以外的任何点，则这个三角化被称为Delaunay三角化。
+\end{myDef}
+
+这个定义表明了Delaunay三角化包含的规则的三角形相对于其它的三角化更多，而这点正好保证了网格的质量。因此，基于Delaunay的网格生成方法成为了一种主流的三角网格生成方法。而Delaunay三角化生成算法有很多种，例如分治算法，增量算法，通过Voronoi划分的对偶图获得等等。在本文的动态网格生成算法中，使用了基于Lawson边翻转的增量算法\cite{lawson}（将任一三角化通过一系列边翻转转化成Delaunay三角化的算法）。之所以使用该算法是因为边翻转算法的灵活性有助于后续的动态网格生成，同时其鲁棒性保证回归到Delaunay三角化，尽管其计算效率并不是最优的。
+
+\begin{algorithm}
+    \KwIn{\\ 一个点集 $S$\;}
+    \KwOut{\\ 一个Delaunay三角化 $T$\;}
+    随机选取三个点生成第一个三角形，从$S$中移除这三个点\;
+    \While{$S$非空}{
+        取出一个点，记为$p$在当前三角化中定位该点\;
+        \eIf{$p$ 在当前三角化的闭包中}
+            {通过1-3和2-4边翻转将新点插入当前三角化中\;}
+            {将新点与对应合适的闭包上的边生成一个新的三角形\;}
+            通过Lawson边翻转将新的三角化变成Delaunay三角化\;}
+    \caption{增量Delaunay三角化生成算法}
+\end{algorithm}
+
+这里1-3翻转和2-4翻转指的是插入点的方法。如果待插入的点在某一个三角形内部，则进行一次1-3翻转，将原三角形分成三个三角形。如果待插入的点在某两个三角形的公用边上，则进行一次2-4翻转将这两个相邻三角形分成4个三角形。形如图\ref{insert}中所展示的。
+
+\begin{center}
+    \begin{figure}[htbp]
+        \centering
+        \begin{minipage}[t]{0.4\linewidth}
+            \begin{center}
+                \subfigure{\label{flip1-3}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[before 1-3 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/1-3.png}}}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{0.4\linewidth}
+            \begin{center}
+                \subfigure{\label{flip1-3after}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[after 1-3 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/1-3after.png}}}
+            \end{center}
+        \end{minipage}
+
+        \begin{minipage}[t]{0.4\linewidth}
+            \begin{center}
+                \subfigure{\label{flip2-4}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[before 2-4 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/2-4.png}}}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{0.4\linewidth}
+            \begin{center}
+                \subfigure{\label{flip2-4after}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[after 2-4 flip]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/2-4after.png}}}
+            \end{center}
+        \end{minipage}
+        \caption{点插入算法}
+        \label{insert}
+    \end{figure}
+\end{center}
+
+\subsection{强制Delaunay三角化和Delaunay再优化}
+Delaunay三角化为生成高质量的三角网格体重了一种有效的方法。并且，对任一确定的点集，如果该点集处于通常状态，即没有四点共则圆，Delaunay三角化是唯一的。然而，再具体应用中，有时不能只对简单点集进行三角化。比如有的物体的边界在网格生成时必须保留，从而描述这个物体的形状变化或运动。但是这些物体的边界与Delaunay准则相违背，这时需要强制这些边在最后的三角化中存在。因此，强制Delaunay三角化应运而生。
+强制Delaunay三角化指的是是一种全局Delaunay而局部非Delaunay的三角化，强制Delaunay三角化可以通过普通Delaunay三角化通过一系列边翻转，恢复强制边来生成，其具体算法见文献\cite{constrained1}。
+而Delaunay再优化方法，则是一种通过添加原点集以外的额外点来提升网格质量的方法。因为原点集在平面的分布不一定是均匀的，故而即使Delaunay三角化可能仍然会产生质量很差的三角化。对于这种情况，可以使用Delaunay再优化方法来添加额外点，分割大的三角形，从而导致不满足Delaunay准则，进而产生边翻转，最终消除过小或过大的的角。具体来说，这个过程先检查所有三角形，然后再其中过大的三角形中心，或者过小角的强制边上插入点\cite{refinement1}，然后进行Lawson边翻转恢复强制Delaunay性质。通过迭代进行这一步骤，原始的Delaunay三角化得以获得均一化和优化。
+\subsection{高维嵌入技术}
+在文献\cite{hd embed}中Dassi、Si和Perotto提出了一种新颖的通过高维嵌入的方法生成各向异性网格的方法。其主要思想是通过将平面三角化的节点通过嵌入函数提升到高维空间，称为嵌入空间。然后在嵌入空间中生成一个拟Delaunay的三角化，这一步通过在嵌入距离下分割，拼接和翻转三角化的边实现。最终，将这个拟Delaunay 三角化投影回原平面。其中各向异性网格的生成是基于特殊的嵌入函数的性质获得的。换言之，可以通过选择合适的嵌入函数将该方法变成一种自然的自适应网格优化方法。
+
+
+\section{动态网格生成}
+本文的动态网格生成方法是基于前一节介绍的强制Delaunay三角化方法的。通过一系列首尾相连的强制边组成一个物体边界的表示。所以动态网格生成的主要任务是移动这些强制边来模拟物体的移动和变形。
+\subsection{动态网格生成算法总览}
+简单来说，本问的动态网格生成方法的核心思路是在移动物体周围“挖一个洞”，从而使得在移动表示物体边界的强制边的时候，不会与其它点和边产生交叉。在将边界强制边移动完后，通过Lawson边翻转和Delaunay再优化来恢复网格的Delaunay性质并进行网格质量的局部优化。算法流程如下\ref{DMGalgo}：
+\begin{algorithm}
+    \KwIn{\\ 一个点集 $S$\\ 一组描述物体边界运动的向量$\{v_s^t\}$，$t$代表当前步数，$s$代表对应点的序号 \\ 总步数 $Maxstep$}
+    \KwOut{\\ 一系列网格$\{M^t\}$}
+    生成初始状态的网格\;
+    $step=0$\;
+    输出该初始网格$M^{step}$\;
+    \While{$step<Maxstep$}{
+        将再优化过程中添加的自由边界点移除，恢复强制边\;
+        移除边界运动过程中的冲突点和冲突边\;
+        通过移动强制点来完成对物体边界的移动：$S_i^{step+1}=S_i^{step}+v_{S_i}^{step}$\;
+        通过局部Lawson边翻转和Delaunay再优化提升局部网格质量\;
+        输出当前时间层的网格：$M^{step}$\;
+        $step=step+1$\;
+    }
+    \caption{动态网格生成算法}
+    \label{DMGalgo}
+\end{algorithm}
+
+这个算法是基于人们的直观感觉，即清除移动路径上的所有阻碍边和点，这样边界强制边就可以没有冲突的直接移动。因为算法调用了删点和加点的操作，故而这个算法属于不保持拓扑的网格生成算法。并且该算法对大变形，相对运动，大位移的网格变形天然支持，在时间效率上，因为在每一个时间步中没有任何的迭代操作，所以计算量极大地减小了。
+\subsection{算法细节讨论}
+在本小节中将对算法的细节进行一些讨论。
+因为对每一个时间步物体边界的描述是通过在物体强制边界点上的一个位移向量表示的，所以那些因为前步Delaunay再优化添加的自由边界点需要先被移除，因为其上没有位移量的描述。这样可以在恢复物体边界一致性的同时，减少物体周围三角形的数量，一定程度上降低计算量。
+为了移除可能的冲突点，需要首先在所有点的列表中找出所有的冲突点。针对所有运动的边界边，区域内所有在该边运动路径上的点都是这个边界边的冲突点。因此，可以将所有边界边的冲突点全部分别移除。但是，这样对每一个边遍历一次全部点列表会导致计算效率十分低下。所以，可以通过放宽对冲突点的判断标准，从而获得查找冲突点计算量的降低。在本文的实例中，使用了一个平行于两个坐标轴的矩形，包围住物体移动前后的位置。同时，为了防止移动之后产生质量过差的三角形，可以将这个矩形4个方向都扩大一些。然后只需要对全局点列表循环一次，移除矩形内部所有的非边界点，就可以去除所有的冲突点。然而，仅仅移除所有冲突点并不能让边界无阻碍地移动打终止位置，因为有可能还有冲突边留存，如图\ref{collision edge}所示。故而还需要处理冲突边，对此，可以将所有的冲突边按照距离待移动点从近到远的顺序进行边翻转，这样将这些边的一端成为待移动点，从而不再成为边界点移动的阻碍。
+在所有强制边和边界点移动之后，再局部调用Lawson边翻转算法和Delaunay再优化算法。之所以局部调用的目的是减少计算代价，具体通过只将被移动的边界点相邻的三角形推入待处理队列，然后使用上述算法对这个队列中的三角形进行处理。这样可以避免对大量无关的三角形进行无意义的判断。
+\subsection{动态高维嵌入}
+为了将高维嵌入算法与本文的动态网格生成方法结合，一个很直观的想法是通过让嵌入函数跟随移动物体一同变化，每一步对嵌入函数进行修改。这样，可以将原本的动态网格生成方法最后的部分变成局部Lawson边翻转和高维嵌入，通过将Delaunay再优化替换为高维嵌入方法，并相应的修改嵌入函数，从而做到使得高维嵌入的自适应效果跟随物体移动进行。
+\begin{algorithm}
+    \KwIn{\\ 一个点集 $S$\\ 一组描述物体边界运动的向量 $\{v_s^t\}$ $t$代表当前步数，$s$代表对应点的序号\\ 总步数 $Maxstep$\\ 动态嵌入函数 $F(x,y,t),\quad t=1,2,\cdots,Maxstep$}
+    \KwOut{\\ 一系列网格 $\{M^t\}$}
+    生成初始状态的网格\;
+    $step=0$\;
+    输出该初始网格$M^{step}$\;
+    \While{$step<Maxstep$}{
+        将高维嵌入过程中添加的自由边界点移除，恢复强制边\;
+        移除边界运动过程中的冲突点和冲突边\;
+        通过移动强制点来完成对物体边界的移动： $S_i^{step+1}=S_i^{step}+v_{S_i}^{step}$\;
+        基于当前的动态嵌入函数$F(x,y,step)$进行高维嵌入\;
+        输出当前时间层的网格： $M^{step}$\;
+        $step=step+1$
+    }
+    \caption{动态高维嵌入网格生成算法}
+    \label{DMGwithHDE}
+\end{algorithm}
+\indent 这个算法能够生成自适应再优化的动态网格，对具体情况而言，可以对变形物体边界处生成各向异性网格，从而模拟边界层等实际情况所需要的网格特性。
+
+
+\section{网格生成实例}
+本节主要展示一些具体的动态网格生成实例，以及对动态网格生成方法与每个时间步网格重新生成方法进行计算时间的统计比较。
+\subsection{物体简单平移，相对运动，变形的动态网格实例及时间统计}
+\subsubsection{物体简单平移动态网格实例}
+
+\begin{center}
+    \begin{figure}[htbp]
+        \centering
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{L-1}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=1]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/L1.jpg}}}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{L-2}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=40]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/L41.jpg}}}
+                \end{center}
+            \end{minipage}
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{L-3}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=80]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/L81.jpg}}}
+            \end{center}
+        \end{minipage}
+        \caption{L型物体简单平移}
+        \label{L-figure}
+    \end{figure}
+\end{center}
+
+\indent\ref{L-figure} 中展示了L型物体简单平移对应的动态网格。整个平移进行了79步，包括初始状态共生成80个平面网格。整个平面尺寸约为物体尺寸的10 倍，移动距离约为平面尺寸的1/3。图中所展示的是初始网格，第经过40步的网格，和最终状态的网格。其时间统计如表\ref{L-table}所示。
+
+\begin{table}[htbp]
+    \centering
+    \caption{L型物体平移时间统计表}
+    \label{L-table}
+    \begin{tabular}{lcccccccc}
+        \toprule
+        网格序号 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80\\
+        \midrule
+        动态生成累计用时（ms）& 690 & 1001 & 1333 & 1674 & 2034 & 2406 & 2817 & 3227 \\
+        重生成累计用时（ms） & 3452 & 6890 & 10347 & 13801 & 17233 & 20671 & 24120 & 27535\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\indent 可以看出在处理简单图形的简单运动时，动态网格的总用时大约是每个时间步重新生成所用时间的1/9左右，而在除去第一张基础网格的生成所用时间之外，每一步动态网格的生成约是重新生成的1/10左右。
+\subsubsection{五边形物体相对运动动态网格实例}
+
+\begin{center}
+    \begin{figure}[htbp]
+        \centering
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{penta-1}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=1]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/relative1.jpg}}}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{penta-2}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=40]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/relative41.jpg}}}
+                \end{center}
+            \end{minipage}
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{penta-3}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=80]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/relative81.jpg}}}
+            \end{center}
+        \end{minipage}
+        \caption{五边形物体相对运动}
+        \label{penta-figure}
+    \end{figure}
+\end{center}
+
+\ref{penta-figure}中展示了两个五边形物体相向运动，然后交错而过的动态网格，整个运动过程进行了79 步，包括初始状态共生成80个平面网格。整个平面尺寸约为物体尺寸的10 倍，移动距离约为平面尺寸的1/2。 图中所展示的是初始网格，第经过40步的网格，和最终状态的网格。其时间统计如\ref{penta-table}所示。
+
+\begin{table}[htbp]
+    \centering
+    \caption{L型物体平移时间统计表}
+    \label{penta-table}
+    \begin{tabular}{lcccccccc}
+        \toprule
+        网格序号 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80\\
+        \midrule
+        动态生成累计时间（ms） & 646 & 954 & 1270 & 1595 & 1924 & 2244 & 2545 & 2869\\
+        重生成累计时间（ms） & 3591 & 7168 & 10755 & 14384 & 17966 & 21532 & 25096 & 28639\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\indent 可以看到与简单物体平移相仿的结果，动态网格生成的总耗时大约是重生成总耗时的1/10，除去初始网格以外，动态网格生成每一张网格的耗时大约是重生成生成一张网格的1/11。
+
+\subsubsection{棍状物体弯折大变形动态网格实例}
+
+\begin{center}
+    \begin{figure}[htbp]
+        \centering
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{s-1}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=1]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/s1.jpg}}}
+            \end{center}
+        \end{minipage}
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{s-2}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=40]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/s41.jpg}}}
+                \end{center}
+            \end{minipage}
+        \begin{minipage}[t]{0.3\linewidth}
+            \begin{center}
+                \subfigure{\label{s-3}}
+                \addtocounter{subfigure}{-2}
+                \subfigure[T=80]{\subfigure{\includegraphics[width=0.8\textwidth]{"result figure"/s81.jpg}}}
+            \end{center}
+        \end{minipage}
+        \caption{棍状物体S型弯折}
+        \label{s-figure}
+    \end{figure}
+\end{center}
+
+\ref{s-figure}中展示了一个棍状物体连续弯折，最终形成一个S型的物体。整个运动过程进行了79步，包括初始状态共生成80个平面网格。整个平面尺寸约为物体尺寸的10 倍，变形位移与物体尺寸相当。图中所展示的是初始网格，第经过40步的网格，和最终状态的网格。其时间统计如\ref{s-table}所示。
+
+\begin{table}[htbp]
+    \centering
+    \caption{棍状物体大变形时间统计表}
+    \label{s-table}
+    \begin{tabular}{lcccccccc}
+        \toprule
+        网格序号 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80\\
+        \midrule
+        动态生成累计时间（ms） & 798 & 1194 & 1642 & 2116 & 2593 & 3066 & 3530 & 3985\\
+        重生成累计时间（ms） & 5955 & 11806 & 17641 & 23478 & 29324 & 35185 & 41039 & 47108\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\indent 可以看到，在这种情况下动态网格生成的总耗时大约是重生成总耗时的1/11，除去初始网格以外，动态网格生成每一张网格的耗时大约是重生成生成一张网格的1/12，略微优于前两种运动状态的时间提升。
+
+\subsubsection{网格最小角的统计}
+针对棍状物体变形的实例，通过统计每个时间步网格最小角来对网格的质量加以衡量，结果如\ref{angle-table}。
+
+\begin{table}[htbp]
+    \centering
+    \caption{棍状物体网格最小角统计}
+    \label{angle-table}
+    \begin{tabular}{lcccccccc}
+        \toprule
+        网格序号 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80\\
+        \midrule
+        动态生成最小角（正弦值） & 0.371438 & 0.371438 & 0.371438 & 0.371438 & 0.371438 & 0.371438 & 0.371438 & 0.371438\\
+        重生成最小角（正弦值） & 0.359945 & 0.373475 & 0.370951 & 0.345668 & 0.390988 & 0.359214 & 0.353701 & 0.378091\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\indent 从表\ref{angle-table}中可以看出，动态生成的网格与重生成的网格在最小角的角度上相差很小，且在多数时间步上动态生成的最小角更大。
+\subsection{高维嵌入网格实例}
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgment
+\section*{Acknowledgment}
+
+
+The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+\bibitem{60}
+Zhe Jiang. Research of the Generation of Dynamic Unstructured Meshes[D]. Nanjing University of Science \& Technology, 2006.
+\bibitem{hd embed}
+Dassi F, Si H, Perotto S, et al. Anisotropic Finite Element Mesh Adaptation via Higher Dimensional Embedding[J]. Procedia Engineering, 2015, 124:265-277.
+\bibitem{Discrete}
+Devadoss S L, O'Rourke J. Discrete and computational geometry[M]. Springer, 2001.
+\bibitem{lawson}
+Charles Lawson. Transforming triangulations. Discrete Mathematics, Volume 3, pages 365–372, 1972.
+\bibitem{constrained1}
+Chew L P. Constrained Delaunay triangulations[J]. Algorithmica, 1989, 4(1-4):97-108.
+\bibitem{constrained2}
+Shewchuk, Jonathan R. (2008). "General-Dimensional Constrained Delaunay and Constrained Regular Triangulations, I: Combinatorial Properties". 39 (1-3): 580–637.
+\bibitem{refinement1}
+Ruppert, Jim (1995). "A Delaunay refinement algorithm for quality 2-dimensional mesh generation". Journal of Algorithms. 18 (3): 548–585. doi:10.1006/jagm.1995.1021
+\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+
